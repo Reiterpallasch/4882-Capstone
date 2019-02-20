@@ -1,0 +1,11 @@
+sudo apt-get update
+sudo apt-get install ruby-full
+sudo gem update
+sudo gem update --system
+sudo apt-get install ruby-dev zlib1g-dev liblzma-dev
+sudo gem install rails
+sudo apt-get install libsq3-dev
+sudo apt-get install nodejs
+bundle install
+
+
