@@ -1,0 +1,5 @@
+Virtual Machine can be downloaded here: https://drive.google.com/file/d/1vjYhLAa-WmXW_pPGSL5pAuJAbybGfaJW/view?usp=sharing
+Installation Instructions: Open VirtualBox and navigate to File -> Import Appliance. Select the file you downloaded from the link above.
+Click next to finish installing the virtual machine. 
+NOTE: It is configured to use 4GB of RAM and 1 CPU core. If you have less than 8 GB of RAM in your computer you may want to reduce this 
+value to 1-2 GB which can be done by going to "Machine -> Settings -> System" and changing the value for "Base Memory".
