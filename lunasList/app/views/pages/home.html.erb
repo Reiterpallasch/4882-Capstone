@@ -1,0 +1,22 @@
+<% provide(:title , 'Home')%>
+    <main role="main" class="container">
+ 
+    <div class="starter-template">
+    <style>
+    html body {background-image: url(image_path('pawprint.jpg'));}
+    </style>
+        <h1>Welcome to the beginning</h1>
+    <% if user_signed_in? %>
+    <ul>
+    <li> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
+    </ul>
+    <% else %>
+   <p>
+<ul>
+<li><%= link_to "Registration", new_user_registration_path %></li>
+<li><%= link_to "Login", new_user_session_path %></li>
+</ul>
+</p>
+ <% end %>
+    </div>
+    </main><!-- /.container -->
