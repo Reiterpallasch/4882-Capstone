@@ -4,4 +4,13 @@ class PagesController < ApplicationController
     
     def restaurants
     end
+    
+    def vets
+    end
+    
+    def parks
+    end
+    
+    def pets
+    end
 end
