@@ -11,4 +11,7 @@
 #
 
 class Event < ApplicationRecord
+    validates :location, presence: true
+    validate :description, presence: true
+    validate :time, presence: true
 end
