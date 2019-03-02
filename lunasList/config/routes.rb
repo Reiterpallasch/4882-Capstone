@@ -6,4 +6,12 @@ Rails.application.routes.draw do
     root to: 'pages#home'
 
     get 'home', to: 'pages#home', as: 'home'
+
+
+    get 'vets', to: 'vets#index', as: 'vets_index'
+    post 'vets', to: 'vets#create', as: 'vets'
+    get 'vets/:id/edit', to: 'vets#edit', as: 'edit_vet'
+    patch 'vets/:id', to: 'vets#update', as: 'vet'
+    put 'vets/:id', to: 'vets#update'
+    delete 'vets/:id', to: 'vets#destroy'
 end
