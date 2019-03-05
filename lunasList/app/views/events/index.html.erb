@@ -20,9 +20,18 @@
         <td><%= each.location %></td>
         <td><%= each.time %></td>
         <td>
+            <%= link_to 'Show', event_path(each) %> 
+            <%= link_to 'Edit', edit_event_path(each) %>
+            <%= link_to 'Destroy', event_path(each), method: :delete %> 
+        </td>
+        
+        </tr>
         <% end %>
     </tbody>
     </table>
     
+    <p>
+        <%= link_to 'Create New Event', new_event_path%>
+    </p>
 
 </main><!-- /.container -->
