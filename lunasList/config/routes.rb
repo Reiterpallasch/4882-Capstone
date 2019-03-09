@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
     get 'vets', to: 'vets#index', as: 'vets_index'
     post 'vets', to: 'vets#create', as: 'vets'
+    get 'vets/new', to: 'vets#new', as: 'new_vet'
     get 'vets/:id/edit', to: 'vets#edit', as: 'edit_vet'
     patch 'vets/:id', to: 'vets#update', as: 'vet'
     put 'vets/:id', to: 'vets#update'

@@ -9,24 +9,15 @@ class VetsController < ApplicationController
         
         
     def new
-        begin
-            @user = User.find(params[:user_id])
-        rescue
-            redirect_to users_url, alert: 'Error: user not found'
-        end
         @vet = Vet.new
     end
 
     def create
-        begin
-            @user = User.find(params[:user_id])
-        rescue
-            redirect_to users_url, alert: 'Error: user not found'
-        end
+
         @vet = Vet.new(params.require(:vet).permit(:address, :businessName, :name, :email, :city, :state, :phone))
-        @user.vets << @vet
-        if @user.save!
-            redirect_to vet_url(), notice: 'vet Successfully added'
+ 
+        if @vet.save!
+            redirect_to vets_url, notice: 'vet Successfully added'
         else
             flash.now[:alert] = 'Error! unable to create'
             render :new
@@ -42,10 +33,10 @@ class VetsController < ApplicationController
         begin
             @vet = Vet.find(params[:id])
         rescue
-            redirect_to vet_url, alert: 'Error: vet not found'
+            redirect_to vets_url, alert: 'Error: vet not found'
         end
         if @vet.update(params.require(:vet).permit(:address, :businessName, :name, :email, :city, :state, :phone, :approved))
-            redirect_to vet_url(), notice: 'vet successfully updated'
+            redirect_to vets_url, notice: 'vet successfully updated'
         else
             flash.now[:alert] = 'Error! unable to update'
             render :edit
@@ -58,9 +49,7 @@ class VetsController < ApplicationController
         rescue
             redirect_to users_url, alert: 'Error: vet not found'
         end
-        @user = @vet.user
         @vet.destroy
-        redirect_to user_url(@user), notice: 'vet destroyed'
+        redirect_to vets_url, notice: 'vet destroyed'
     end
-end
 end
