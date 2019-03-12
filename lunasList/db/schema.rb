@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_03_12_083345) do
     t.datetime "updated_at", null: false
   end
 
-ActiveRecord::Schema.define(version: 2019_03_02_011125) do
+
 
 
   create_table "users", force: :cascade do |t|
