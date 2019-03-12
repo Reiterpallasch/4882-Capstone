@@ -1,4 +1,5 @@
 class ParksController < ApplicationController
+
   def index
         @parks = Park.all
     end
@@ -47,9 +48,10 @@ class ParksController < ApplicationController
         begin
             @park = Park.find(params[:id])
         rescue
-            redirect_to users_url, alert: 'park not found'
+            redirect_to parks_url, alert: 'park not found'
         end
         @park.destroy
         redirect_to parks_url, notice: 'park deleted'
     end
+
 end
