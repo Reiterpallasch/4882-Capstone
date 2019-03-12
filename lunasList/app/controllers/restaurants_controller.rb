@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+
   def index
         @restaurants = Restaurant.all
     end
@@ -47,9 +48,10 @@ class RestaurantsController < ApplicationController
         begin
             @restaurant = Restaurant.find(params[:id])
         rescue
-            redirect_to users_url, alert: 'restaurant not found'
+            redirect_to restaurants_url, alert: 'restaurant not found'
         end
         @restaurant.destroy
         redirect_to restaurants_url, notice: 'restaurant deleted'
     end
+
 end
