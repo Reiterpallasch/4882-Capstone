@@ -9,8 +9,6 @@ Rails.application.routes.draw do
 
 
 
-
-
     get 'restaurants', to: 'restaurants#index', as: 'restaurants_index'
     post 'restaurants', to: 'restaurants#create', as: 'restaurants'
     get 'restaurants/new', to: 'restaurants#new', as: 'new_restaurant'
@@ -27,4 +25,13 @@ Rails.application.routes.draw do
     patch 'parks/:id', to: 'parks#update', as: 'park'
     put 'parks/:id', to: 'parks#update'
     delete 'parks/:id', to: 'parks#destroy'
+
+    get 'vets', to: 'vets#index', as: 'vets_index'
+    post 'vets', to: 'vets#create', as: 'vets'
+    get 'vets/new', to: 'vets#new', as: 'new_vet'
+    get 'vets/:id/edit', to: 'vets#edit', as: 'edit_vet'
+    patch 'vets/:id', to: 'vets#update', as: 'vet'
+    put 'vets/:id', to: 'vets#update'
+    delete 'vets/:id', to: 'vets#destroy'
+
 end
