@@ -14,7 +14,7 @@ class RestaurantsController < ApplicationController
 
     def create
 
-        @restaurant = Restaurant.new(params.require(:vet).permit(:businessName, :address, :city, :state, :phone))
+        @restaurant = Restaurant.new(params.require(:restaurant).permit(:businessName, :address, :city, :state, :phone))
  
         if @restaurant.save!
             redirect_to restaurants_url, notice: 'restaurant added'
