@@ -49,7 +49,7 @@ class RestaurantsController < ApplicationController
         rescue
             redirect_to users_url, alert: 'restaurant not found'
         end
-        @vet.destroy
-        redirect_to vets_url, notice: 'restaurant deleted'
+        @restaurant.destroy
+        redirect_to restaurants_url, notice: 'restaurant deleted'
     end
 end
