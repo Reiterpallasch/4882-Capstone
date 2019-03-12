@@ -1,0 +1,48 @@
+<main role="main" class="container">
+
+
+    <h1>Vets</h1>
+
+    <table class="table table-sm">
+    <thead>
+        <tr>
+        <th scope="col">Business</th>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <% @vets.each do |each| %>
+        <tr>
+        <td><%= each.businessName %></td>
+        <td><%= each.name %></td>
+        <td><%= each.address %></td>
+        <td><%= each.city %></td>
+        <td><%= each.state %></td>
+        <td><%= each.phone %></td>
+        <td><%= each.email %></td>
+        
+        <td>
+ 
+            
+            <%= link_to 'Edit', edit_vet_path(each) %>
+            <%= link_to 'Destroy', vet_path(each), method: :delete %> 
+            
+        </td> 
+        
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+    
+    <p>
+        <%= link_to 'Create New Vet', new_vet_path%>
+    </p>
+
+</main><!-- /.container -->

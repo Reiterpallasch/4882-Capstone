@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: vets
+#
+#  id           :integer          not null, primary key
+#  address      :string
+#  businessName :string
+#  city         :string
+#  email        :string
+#  name         :string
+#  phone        :integer
+#  state        :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  businessName: MyString
+  name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  phone: 1
+  email: MyString
+
+two:
+  businessName: MyString
+  name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  phone: 1
+  email: MyString
