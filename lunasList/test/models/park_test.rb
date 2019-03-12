@@ -1,15 +1,16 @@
 # == Schema Information
 #
-# Table name: pets
+# Table name: parks
 #
 #  id         :integer          not null, primary key
-#  age        :integer
-#  gender     :string
-#  name       :string
-#  type       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Pet < ApplicationRecord
+require 'test_helper'
+
+class ParkTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
