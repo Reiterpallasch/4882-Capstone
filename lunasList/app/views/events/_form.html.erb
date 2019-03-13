@@ -34,7 +34,21 @@
             </div>
         
     </div>
-
+<%if user_signed_in? %>
+<% if current_user.admin == true %>
+    <div class="field">
+        <%= form.label :approved%>
+        <%= form.text_field :approved, class: 'form-control' %>
+        <% if park.errors.full_messages_for(:email).any?%>
+            <div class="invalid-feedback">
+                <% park.errors.full_messages_for(:email).each do |error_message|%>
+                    <%= error_message %>.
+                <% end %>
+            </div>
+        <% end %>
+<% end %>
+<%end%>
+    </div>
     <div class="actions">
         <%= form.submit 'Submit', class: 'btn btn-primary'%>
     </div>

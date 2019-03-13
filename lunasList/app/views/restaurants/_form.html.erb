@@ -1,11 +1,11 @@
-<%= form_with model: park, local: true do |form| %>
+<%= form_with model: restaurant, local: true do |form| %>
 
     <div class="field">
-        <%= form.label :name, 'Park Name'%>
+        <%= form.label :name, 'Name'%>
         <%= form.text_field :name, class: 'form-control' %>
-        <% if park.errors.full_messages_for(:name).any?%>
+        <% if restaurant.errors.full_messages_for(:name).any?%>
             <div class="invalid-feedback">
-                <% park.errors.full_messages_for(:name).each do |error_message|%>
+                <% restaurant.errors.full_messages_for(:name).each do |error_message|%>
                     <%= error_message %>.
                 <% end %>
             </div>
@@ -17,9 +17,9 @@
     <div class="field">
         <%= form.label :address%>
         <%= form.text_field :address, class: 'form-control' %>
-        <% if park.errors.full_messages_for(:address).any?%>
+        <% if restaurant.errors.full_messages_for(:address).any?%>
             <div class="invalid-feedback">
-                <% park.errors.full_messages_for(:address).each do |error_message|%>
+                <% restaurant.errors.full_messages_for(:address).each do |error_message|%>
                     <%= error_message %>.
                 <% end %>
             </div>
@@ -29,23 +29,11 @@
 
 
     <div class="field">
-        <%= form.label :size%>
-        <%= form.text_field :size, class: 'form-control' %>
-        <% if park.errors.full_messages_for(:size).any?%>
+        <%= form.label :type%>
+        <%= form.text_field :type, class: 'form-control' %>
+        <% if restaurant.errors.full_messages_for(:type).any?%>
             <div class="invalid-feedback">
-                <% park.errors.full_messages_for(:size).each do |error_message|%>
-                    <%= error_message %>.
-                <% end %>
-            </div>
-        <% end %>
-    </div>
-
-    <div class="field">
-        <%= form.label :leash%>
-        <%= form.text_field :leash, class: 'form-control' %>
-        <% if park.errors.full_messages_for(:leash).any?%>
-            <div class="invalid-feedback">
-                <% park.errors.full_messages_for(:leash).each do |error_message|%>
+                <% restaurant.errors.full_messages_for(:type).each do |error_message|%>
                     <%= error_message %>.
                 <% end %>
             </div>
@@ -58,9 +46,9 @@
     <div class="field">
         <%= form.label :approved%>
         <%= form.text_field :approved, class: 'form-control' %>
-        <% if park.errors.full_messages_for(:email).any?%>
+        <% if restaurant.errors.full_messages_for(:email).any?%>
             <div class="invalid-feedback">
-                <% park.errors.full_messages_for(:email).each do |error_message|%>
+                <% restaurant.errors.full_messages_for(:email).each do |error_message|%>
                     <%= error_message %>.
                 <% end %>
             </div>
