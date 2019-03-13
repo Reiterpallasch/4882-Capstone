@@ -1,16 +1,14 @@
 # == Schema Information
 #
-# Table name: parks
+# Table name: stores
 #
 #  id         :integer          not null, primary key
-
 #  address    :string
-#  leash      :string
-#  name       :string
-#  size       :string
-
 #  approved   :boolean
-
+#  city       :string
+#  phone      :integer
+#  state      :string
+#  storeName  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -18,13 +16,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  storeName: MyString
   address: MyString
-  size: MyString
-  leash: MyString
+  city: MyString
+  state: MyString
+  approved: false
+  phone: 1
 
 two:
-  name: MyString
+  storeName: MyString
   address: MyString
-  size: MyString
-  leash: MyString
+  city: MyString
+  state: MyString
+  approved: false
+  phone: 1

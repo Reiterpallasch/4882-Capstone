@@ -42,6 +42,14 @@ Rails.application.routes.draw do
     put 'parks/:id', to: 'parks#update'
     delete 'parks/:id', to: 'parks#destroy'
 
+    get 'stores', to: 'stores#index', as: 'stores_index'
+    post 'stores', to: 'stores#create', as: 'stores'
+    get 'stores/new', to: 'stores#new', as: 'new_store'
+    get 'stores/:id/edit', to: 'stores#edit', as: 'edit_store'
+    patch 'stores/:id', to: 'stores#update', as: 'store'
+    put 'stores/:id', to: 'stores#update'
+    delete 'stores/:id', to: 'stores#destroy'
+
     get 'vets', to: 'vets#index', as: 'vets_index'
     post 'vets', to: 'vets#create', as: 'vets'
     get 'vets/new', to: 'vets#new', as: 'new_vet'

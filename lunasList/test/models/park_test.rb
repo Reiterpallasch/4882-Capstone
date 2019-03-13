@@ -3,10 +3,14 @@
 # Table name: parks
 #
 #  id         :integer          not null, primary key
+
 #  address    :string
 #  leash      :string
 #  name       :string
 #  size       :string
+
+#  approved   :boolean
+
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
