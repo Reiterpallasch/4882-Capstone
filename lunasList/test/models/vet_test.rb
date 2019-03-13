@@ -4,6 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  address      :string
+#  approved     :boolean
 #  businessName :string
 #  city         :string
 #  email        :string

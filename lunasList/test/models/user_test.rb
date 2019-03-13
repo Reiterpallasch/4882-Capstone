@@ -3,6 +3,9 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
+#  admin                  :boolean
+#  business               :boolean
+#  businessName           :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  remember_created_at    :datetime

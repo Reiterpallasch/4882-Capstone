@@ -3,6 +3,7 @@
 # Table name: events
 #
 #  id          :integer          not null, primary key
+#  approved    :boolean
 #  description :string
 #  location    :string
 #  time        :datetime
