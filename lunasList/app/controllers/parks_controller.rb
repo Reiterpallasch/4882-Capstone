@@ -15,7 +15,7 @@ class ParksController < ApplicationController
 
     def create
 
-        @park = Park.new(params.require(:park).permit(:name, :address, :city, :state))
+        @park = Park.new(params.require(:park).permit(:name, :address, :leash, :size))
  
         if @park.save!
             redirect_to parks_url, notice: 'park added'
@@ -36,7 +36,7 @@ class ParksController < ApplicationController
         rescue
             redirect_to parks_url, alert: 'park not found'
         end
-        if @park.update(params.require(:park).permit(:name, :address, :city, :state, :approved))
+        if @park.update(params.require(:park).permit(:name, :address, :leash, :size, :approved))
             redirect_to parks_url, notice: 'park updated'
         else
             flash.now[:alert] = 'update failed'

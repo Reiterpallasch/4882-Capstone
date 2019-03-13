@@ -1,7 +1,7 @@
 <%= form_with model: vet, local: true do |form| %>
 
     <div class="field">
-        <%= form.label :businessName%>
+        <%= form.label :businessName, 'Business Name'%>
         <%= form.text_field :businessName, class: 'form-control' %>
         <% if vet.errors.full_messages_for(:businessName).any?%>
             <div class="invalid-feedback">
@@ -82,6 +82,21 @@
                 <% end %>
             </div>
         <% end %>
+    </div>
+<%if user_signed_in? %>
+<% if current_user.admin == true %>
+    <div class="field">
+        <%= form.label :approved%>
+        <%= form.text_field :approved, class: 'form-control' %>
+        <% if vet.errors.full_messages_for(:email).any?%>
+            <div class="invalid-feedback">
+                <% vet.errors.full_messages_for(:email).each do |error_message|%>
+                    <%= error_message %>.
+                <% end %>
+            </div>
+        <% end %>
+<% end %>
+<%end%>
     </div>
 
     <div class="actions">
