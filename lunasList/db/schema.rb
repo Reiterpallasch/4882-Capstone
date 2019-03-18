@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_03_13_051609) do
-
+ActiveRecord::Schema.define(version: 2019_03_18_221204) do
 
   create_table "events", force: :cascade do |t|
     t.string "location"
@@ -50,9 +48,8 @@ ActiveRecord::Schema.define(version: 2019_03_13_051609) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "approved"
+    t.string "style"
   end
-
-
 
   create_table "stores", force: :cascade do |t|
     t.string "storeName"
@@ -64,7 +61,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_051609) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

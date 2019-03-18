@@ -29,11 +29,11 @@
 
 
     <div class="field">
-        <%= form.label :type%>
-        <%= form.text_field :type, class: 'form-control' %>
-        <% if restaurant.errors.full_messages_for(:type).any?%>
+        <%= form.label :style%>
+        <%= form.text_field :style, class: 'form-control' %>
+        <% if restaurant.errors.full_messages_for(:style).any?%>
             <div class="invalid-feedback">
-                <% restaurant.errors.full_messages_for(:type).each do |error_message|%>
+                <% restaurant.errors.full_messages_for(:style).each do |error_message|%>
                     <%= error_message %>.
                 <% end %>
             </div>
