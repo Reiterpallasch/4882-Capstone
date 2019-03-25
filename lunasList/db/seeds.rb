@@ -14,3 +14,5 @@ Event.create!(location: "Botanic Garden", description: "cat owner meeting", time
 Event.create!(location: "Somewhere in Memphis", description: "pet owner meeting", time: "2019-7-20 15:00")
 Event.create!(location: "Anywhere is ok", description: "just meeting", time: "2019-8-20 15:00")
 Event.create!(location: "No idea", description: "dog racing", time: "2019-9-20 15:00")
+
+User.create!(email: "test@google.com" , password: "google" , admin: true)
