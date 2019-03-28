@@ -5,7 +5,7 @@ class PetsController < ApplicationController
   
   def new
         begin
-            @user = User.find(params[:employee_id])
+            @user = User.find(params[:user_id])
         rescue
             redirect_to users_url, alert: 'user not found'
         end
@@ -13,7 +13,7 @@ class PetsController < ApplicationController
   end
   
   def create
-        @pet = Pet.new(params.require(:pet).permit(:type, :name, :age, :gender))
+        @pet = Pet.new(params.require(:pet).permit(:species, :name, :age, :gender))
  
         if @pet.save!
             redirect_to pets_url, notice: 'pet added'
