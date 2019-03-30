@@ -1,5 +1,18 @@
 class TopicsController < ApplicationController
 
+  def index
+        @topics = Topic.all
+    end
+
+     def show
+         @topicss = Topic.find(params[:id])
+     end
+        
+        
+    def new
+        @topic = Topic.new
+    end
+
 def create
   @topic = Topic.new(params[:topic])
   if @topic.save

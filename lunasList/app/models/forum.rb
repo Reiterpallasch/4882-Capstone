@@ -10,5 +10,9 @@
 #
 
 class Forum < ApplicationRecord
+    def most_recent_post
+        topic = Topic.first(:order => 'last_post_at DESC', :conditions => ['forum_id = ?', self.id])
+        return topic
+    end
     has_many :topics, :dependent => :destroy
 end
