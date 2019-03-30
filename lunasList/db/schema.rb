@@ -12,9 +12,37 @@
 
 ActiveRecord::Schema.define(version: 2019_03_30_014328) do
 
+  create_table "events", force: :cascade do |t|
+    t.string "location"
+    t.string "description"
+    t.datetime "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "approved"
+  end
+
   create_table "forums", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parks", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "size"
+    t.string "leash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "approved"
+  end
+
+  create_table "pets", force: :cascade do |t|
+    t.string "type"
+    t.string "name"
+    t.integer "age"
+    t.string "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,7 +52,28 @@ ActiveRecord::Schema.define(version: 2019_03_30_014328) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "topic_id"
-    t.integer "user_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.text "additional"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "approved"
+    t.string "style"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "storeName"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.boolean "approved"
+    t.integer "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "topics", force: :cascade do |t|
@@ -34,7 +83,34 @@ ActiveRecord::Schema.define(version: 2019_03_30_014328) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "forum_id"
-    t.integer "user_id"
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "admin"
+    t.boolean "business"
+    t.string "businessName"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vets", force: :cascade do |t|
+    t.string "businessName"
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.integer "phone"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "approved"
+end
 
 end
