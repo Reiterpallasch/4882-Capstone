@@ -21,9 +21,35 @@ Rails.application.routes.draw do
     delete 'events/:id', to: 'events#destroy'
 
 
-    
+    get 'forums', to: 'forums#index', as: 'forums'
+    get 'forums/edit', to: 'forums#edit'
+    post 'forums', to: 'forums#create'
+    get 'forums/new', to: 'forums#new', as: 'new_forum'
+    get 'forums/:id', to: 'forums#show', as: 'forum'
+    get 'forums/:id/edit', to: 'forums#edit', as: 'edit_forum'
+    patch 'forums/:id', to: 'forums#update'
+    put 'forums/:id', to: 'forums#update'
+    delete 'forums/:id', to: 'forums#destroy'
 
-
+    get 'topics', to: 'topics#index', as: 'topics'
+    get 'topics/edit', to: 'topics#edit'
+    post 'topics', to: 'topics#create'
+    get 'topics/new', to: 'topics#new', as: 'new_topic'
+    get 'topics/:id', to: 'topics#show', as: 'topic'
+    get 'topics/:id/edit', to: 'topics#edit', as: 'edit_topic'
+    patch 'topics/:id', to: 'topics#update'
+    put 'topics/:id', to: 'topics#update'
+    delete 'topics/:id', to: 'topics#destroy'
+	
+    get 'posts', to: 'posts#index', as: 'posts'
+    get 'posts/edit', to: 'posts#edit'
+    post 'posts', to: 'posts#create'
+    get 'posts/new', to: 'posts#new', as: 'new_post'
+    get 'posts/:id', to: 'posts#show', as: 'post'
+    get 'posts/:id/edit', to: 'posts#edit', as: 'edit_post'
+    patch 'posts/:id', to: 'posts#update'
+    put 'posts/:id', to: 'posts#update'
+    delete 'posts/:id', to: 'posts#destroy'
 
     get 'restaurants', to: 'restaurants#index', as: 'restaurants_index'
     post 'restaurants', to: 'restaurants#create', as: 'restaurants'
