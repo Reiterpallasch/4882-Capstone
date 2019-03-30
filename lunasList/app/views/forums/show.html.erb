@@ -1,4 +1,4 @@
-<h2>@forum.name</h2>
+<h2><%= @forum.name %></h2>
  
 
 <table>
@@ -17,4 +17,4 @@
   <% end %>
 </table>
  
-<p><% if logged_in? %><%= link_to "New Topic", "/topics/new?forum=#{@forum.id}" %><% end %></p>
+<p><% if user_signed_in? %><%= link_to "New Topic", "/topics/new?forum=#{@forum.id}" %><% end %></p>

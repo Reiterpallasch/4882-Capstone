@@ -1,5 +1,5 @@
 class ForumsController < ApplicationController
-before_filter :admin_required, :except => [:index, :show]
+before_action :admin_required, :except => [:index, :show]
   def index
     @forums = Forum.all
   end
@@ -13,7 +13,7 @@ before_filter :admin_required, :except => [:index, :show]
   end
 
   def create
-    @forum = Forum.new(params[:forum])
+    @forum = Forum.new(params.require(:forum).permit(:description, :name, :created_at))
     if @forum.save
       redirect_to @forum, :notice => "Successfully created forum."
     else
