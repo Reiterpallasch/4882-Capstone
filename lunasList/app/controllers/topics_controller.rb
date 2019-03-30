@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+before_filter :login_required, :except => [:index, :show]
+before_filter :admin_required, :only => :destroy
   def index
     @topics = Topic.all
   end
@@ -11,14 +13,22 @@ class TopicsController < ApplicationController
     @topic = Topic.new
   end
 
-  def create
-    @topic = Topic.new(params[:topic])
-    if @topic.save
-      redirect_to @topic, :notice => "Successfully created topic."
+def create
+  @topic = Topic.new(params[:topic])
+  if @topic.save
+    @topic = Topic.new(:name => params[:topic][:name], :last_poster_id => current_user.id, :last_post_at => Time.now, :forum_id => params[:topic][:forum_id], :user_id => current_user.id)
+
+ 
+    if @post.save
+      flash[:notice] = "Successfully created topic."
+      redirect_to "/forums/#{@topic.forum_id}"
     else
-      render :action => 'new'
+      redirect :action => 'new'
     end
+  else
+    render :action => 'new'
   end
+end
 
   def edit
     @topic = Topic.find(params[:id])
@@ -27,7 +37,7 @@ class TopicsController < ApplicationController
   def update
     @topic = Topic.find(params[:id])
     if @topic.update_attributes(params[:topic])
-      redirect_to @topic, :notice  => "Successfully updated topic."
+      redirect_to "/forums/#{@topic.forum_id}", :notice  => "Successfully updated topic."
     else
       render :action => 'edit'
     end
@@ -36,6 +46,6 @@ class TopicsController < ApplicationController
   def destroy
     @topic = Topic.find(params[:id])
     @topic.destroy
-    redirect_to topics_url, :notice => "Successfully destroyed topic."
+    redirect_to "/forums/#{@topic.forum_id}", :notice => "Successfully destroyed topic."
   end
 end

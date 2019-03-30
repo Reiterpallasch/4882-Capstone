@@ -1,12 +1,16 @@
-<%= form_for @forum do |f| %>
+<% form_for @topic do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label :last_poster_id %><br />
+    <%= f.text_field :last_poster_id %>
   </p>
-  <p><%= f.submit %></p>
+  <p>
+    <%= f.label :last_post_at %><br />
+    <%= f.datetime_select :last_post_at %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
 <% end %>

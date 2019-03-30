@@ -1,20 +1,12 @@
-<%= form_for @topic do |f| %>
+<% form_for @topic do |f| %>
   <%= f.error_messages %>
+  <% if params[:forum] %><input type="hidden" id="topic_forum_id" name="topic[forum_id]" value="<%= params[:forum] %>" /><% end %>
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :last_poster_id %><br />
-    <%= f.text_field :last_poster_id %>
+    <textarea name="post[content]" cols="80" rows="20"><%= @post.content %></textarea>
   </p>
-  <p>
-    <%= f.label :last_post_at %><br />
-    <%= f.text_field :last_post_at %>
-  </p>
-  <p>
-    <%= f.label :forum_id %><br />
-    <%= f.text_field :forum_id %>
-  </p>
-  <p><%= f.submit %></p>
+  <p><%= f.submit "Create" %></p>
 <% end %>
