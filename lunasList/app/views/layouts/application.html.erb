@@ -12,7 +12,7 @@
   <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-          <%= link_to "Luna's List", home_path, class: 'navbar-brand' %>
+          <%= link_to "Luna's List", main_app.home_path, class: 'navbar-brand' %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -20,28 +20,31 @@
           <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <%= link_to 'Home', home_path, class: 'nav-link' %>
+                <%= link_to 'Home', main_app.home_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Stores', stores_index_path, class: 'nav-link' %>
+                <%= link_to 'Stores', main_app.stores_index_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Events', events_path, class: 'nav-link' %>
+                <%= link_to 'Events', main_app.events_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Parks', parks_index_path, class: 'nav-link' %>
+                <%= link_to 'Parks', main_app.parks_index_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Restaurants', restaurants_index_path, class: 'nav-link' %>
+                <%= link_to 'Restaurants', main_app.restaurants_index_path, class: 'nav-link' %>
               </li>
                <li class="nav-item">
-                <%= link_to 'Vets', vets_index_path, class: 'nav-link' %>
+                <%= link_to 'Vets', main_app.vets_index_path, class: 'nav-link' %>
+              </li>
+               <li class="nav-item">
+                <%= link_to 'Forums', forum_path, class: 'nav-link' %>
               </li>
                 <% if user_signed_in? %>
-                <li class ="nav-item"> <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link' %> </li>
+                <li class ="nav-item"> <%= link_to "Logout", main_app.destroy_user_session_path, method: :delete, class: 'nav-link' %> </li>
                 <% else %>
-                <li class ="nav-item"><%= link_to "Registration", new_user_registration_path, class: 'nav-link' %></li>
-                <li class ="nav-item"><%= link_to "Login", new_user_session_path, class: 'nav-link' %></li>
+                <li class ="nav-item"><%= link_to "Registration", main_app.new_user_registration_path, class: 'nav-link' %></li>
+                <li class ="nav-item"><%= link_to "Login", main_app.new_user_session_path, class: 'nav-link' %></li>
 <% end %>
 
 
@@ -67,3 +70,4 @@
     <%= yield %>
   </body>
 </html>
+

@@ -14,5 +14,6 @@ class Forum < ApplicationRecord
         topic = Topic.order(created_at: :desc)
         return topic
     end
-    has_many :topics, :dependent => :destroy
+    has_many :topics
+    has_many :posts, :through => :topics
 end

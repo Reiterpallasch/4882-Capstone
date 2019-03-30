@@ -9,7 +9,6 @@
 #  updated_at     :datetime         not null
 #  forum_id       :integer
 #  last_poster_id :integer
-#  user_id        :integer
 #
 
 require 'test_helper'

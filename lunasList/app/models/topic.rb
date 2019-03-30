@@ -9,11 +9,10 @@
 #  updated_at     :datetime         not null
 #  forum_id       :integer
 #  last_poster_id :integer
-#  user_id        :integer
 #
 
 class Topic < ApplicationRecord
     belongs_to :forum
     belongs_to :user
-    has_many :posts, :dependent => :destroy
+    has_many :posts
 end
