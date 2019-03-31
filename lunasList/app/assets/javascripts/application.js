@@ -14,6 +14,7 @@
 //= require popper
 //= require bootstrap
 //= require bootstrap-sprockets
+//= require thredded
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
