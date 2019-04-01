@@ -27,7 +27,7 @@ class PetsController < ApplicationController
         @pet = Pet.find(params[:id])
   end
   
-  def update
+    def update
         begin
             @pet = Pet.find(params[:id])
         rescue
@@ -49,5 +49,5 @@ class PetsController < ApplicationController
         end
         @restaurant.destroy
         redirect_to pets_url, notice: 'pet deleted'
-  end
+    end
 end
