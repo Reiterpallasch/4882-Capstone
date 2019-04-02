@@ -14,9 +14,10 @@
 #
 
 class Store < ApplicationRecord
-def self.search(search)
-  if search
-    self.where(city: search)
+def self.search(searchcity)
+  if searchcity
+    correct = searchcity.slice(0,1).capitalize + searchcity.slice(1..-1)
+    self.where(city: correct)
   else
     Store.all
   end

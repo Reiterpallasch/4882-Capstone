@@ -12,6 +12,13 @@
 </iframe></p>
 	</br>
 
+<h4>Search by City</h4>
+<p>
+	<%= form_tag restaurants_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :city => nil%>
+<% end %>
+</p></br>
 <% if user_signed_in? && current_user.admin == true%>
     <table class="table table-sm">
     <thead>
@@ -19,9 +26,9 @@
 
         <th scope="col">Name</th>
         <th scope="col">Address</th>
-
-
-        <th scope="col">Type</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Style</th>
 
 	<th scope="col">Approved</th>
         <th scope="col"></th>
@@ -34,6 +41,8 @@
 
         <td><%= restaurant.name %></td>
         <td><%= restaurant.address %></td>
+        <td><%= restaurant.city %></td>
+        <td><%= restaurant.state %></td>
         <td><%= restaurant.type %></td>
 
 
@@ -45,7 +54,7 @@
         
         <td>
  
-            
+             <%= link_to 'Show', restaurant_path(restaurant) %>           
             <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
             <%= link_to 'Destroy', restaurant_path(restaurant), method: :delete %> 
             
@@ -65,8 +74,9 @@
 
         <th scope="col">Name</th>
         <th scope="col">Address</th>
-
-        <th scope="col">Type</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Style</th>
         <th scope="col"></th>
 
         </tr>
@@ -78,8 +88,10 @@
 
         <td><%= restaurant.name %></td>
         <td><%= restaurant.address %></td>
+        <td><%= restaurant.city %></td>
+        <td><%= restaurant.state %></td>
         <td><%= restaurant.type %></td>
-
+             <td><%= link_to 'Show', restaurant_path(restaurant) %>  </td>
 
 	<%end%>
         

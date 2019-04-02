@@ -2,7 +2,6 @@
 
 
     <h1>Parks</h1>
-
 	<p>
 	<iframe
   width="600"
@@ -13,6 +12,14 @@
 </iframe></p>
 	</br>
 
+<h4>Search by City</h4>
+<p>
+	<%= form_tag parks_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :city => nil%>
+<% end %>
+</p></br>
+
 <% if user_signed_in? && current_user.admin == true%>
     <table class="table table-sm">
     <thead>
@@ -20,6 +27,8 @@
 
         <th scope="col">Name</th>
         <th scope="col">Address</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
 		<th scope="col">Size</th>
 
         <th scope="col">Leash</th>
@@ -35,6 +44,8 @@
 
         <td><%= park.name %></td>
         <td><%= park.address %></td>
+        <td><%= park.city %></td>
+        <td><%= park.state %></td>
         <td><%= park.size %></td>
 		<td><%= park.leash %></td>
 
@@ -46,7 +57,7 @@
         
         <td>
  
-            
+            <%= link_to 'Show', park_path(park) %>           
             <%= link_to 'Edit', edit_park_path(park) %>
             <%= link_to 'Destroy', park_path(park), method: :delete %> 
             
@@ -69,7 +80,8 @@
 
         <th scope="col">Name</th>
         <th scope="col">Address</th>
-
+        <th scope="col">City</th>
+        <th scope="col">State</th>
         <th scope="col">Size</th>
         <th scope="col">Leash</th>
         <th scope="col"></th>
@@ -83,8 +95,11 @@
 
         <td><%= park.name %></td>
         <td><%= park.address %></td>
+        <td><%= park.city %></td>
+        <td><%= park.state %></td>
         <td><%= park.size %></td>
         <td><%= park.leash %></td>
+        <td><%= link_to 'Show', park_path(park) %> </td>
 
 	<%end%>
         

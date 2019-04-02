@@ -6,20 +6,11 @@
 #  additional :text
 #  address    :string
 #  approved   :boolean
+#  city       :string
 #  name       :string
+#  state      :string
 #  style      :string
 #  type       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
-
-#  additional :text
-#  address    :string
-#  name       :string
-#  type       :string
-
-#  approved   :boolean
-
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
