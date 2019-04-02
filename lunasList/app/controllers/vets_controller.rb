@@ -14,7 +14,7 @@ class VetsController < ApplicationController
 
     def create
 
-        @vet = Vet.new(params.require(:vet).permit(:address, :businessName, :name, :email, :city, :state, :phone))
+        @vet = Vet.new(params.require(:vet).permit(:address, :businessName, :name, :email, :city, :state, :phone, :approved))
  
         if @vet.save!
             redirect_to vets_url, notice: 'vet Successfully added'

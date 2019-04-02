@@ -1,7 +1,17 @@
 <main role="main" class="container">
 
 
-    <h1>restaurants</h1>
+    <h1>Restaurants</h1>
+	<p>
+	<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBoj1FdGM5fcqBdj9MCTVFlEhm3FTcoUzY
+    &q=restaurants+in+<%=request.location.city%>+<%=request.location.state%>" allowfullscreen>
+</iframe></p>
+	</br>
+
 <% if user_signed_in? && current_user.admin == true%>
     <table class="table table-sm">
     <thead>

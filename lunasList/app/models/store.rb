@@ -14,4 +14,11 @@
 #
 
 class Store < ApplicationRecord
+def self.search(search)
+  if search
+    self.where(city: search)
+  else
+    Store.all
+  end
+end
 end

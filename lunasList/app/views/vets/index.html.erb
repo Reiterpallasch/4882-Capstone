@@ -2,21 +2,23 @@
 
 
     <h1>Vets</h1>
-	
+	<p>
 	<iframe
   width="600"
   height="450"
   frameborder="0" style="border:0"
   src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBoj1FdGM5fcqBdj9MCTVFlEhm3FTcoUzY
     &q=vets+in+<%=request.location.city%>+<%=request.location.state%>" allowfullscreen>
-</iframe>
-	
-	<% form_tag projects_path, :method => 'get' do %>
-  <p>
+</iframe></p>
+	</br>
+
+<h4>Search by City</h4>
+<p>
+	<%= form_tag vets_path, :method => 'get' do %>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
+    <%= submit_tag "Search", :city => nil%>
 <% end %>
+</p></br>
 <% if user_signed_in? && current_user.admin == true%>
     <table class="table table-sm">
     <thead>
@@ -51,7 +53,7 @@
         
         <td>
  
-            <%= link_to 'Show', show_vet_path(vet) %>
+            <%= link_to 'Show', vet_path(vet) %>
             <%= link_to 'Edit', edit_vet_path(vet) %>
             <%= link_to 'Destroy', vet_path(vet), method: :delete %> 
             
@@ -91,6 +93,7 @@
         <td><%= vet.state %></td>
         <td><%= vet.phone %></td>
         <td><%= vet.email %></td>
+        <%= link_to 'Show', vet_path(vet) %>
 	<%end%>
         
         </tr>

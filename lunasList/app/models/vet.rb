@@ -18,9 +18,9 @@
 class Vet < ApplicationRecord
 def self.search(search)
   if search
-    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    self.where(city: search)
   else
-    find(:all)
+    Vet.all
   end
 end
 end

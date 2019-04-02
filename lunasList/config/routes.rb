@@ -53,8 +53,9 @@ Rails.application.routes.draw do
     get 'stores', to: 'stores#index', as: 'stores_index'
     post 'stores', to: 'stores#create', as: 'stores'
     get 'stores/new', to: 'stores#new', as: 'new_store'
+    get 'stores/:id', to: 'stores#show', as: 'store'
     get 'stores/:id/edit', to: 'stores#edit', as: 'edit_store'
-    patch 'stores/:id', to: 'stores#update', as: 'store'
+    patch 'stores/:id', to: 'stores#update'
     put 'stores/:id', to: 'stores#update'
     delete 'stores/:id', to: 'stores#destroy'
 
