@@ -10,5 +10,10 @@
 #
 
 class Forum < ApplicationRecord
-    has_many :topics, :dependent => :destroy
+    def most_recent_post
+        topic = Topic.order(created_at: :desc)
+        return topic
+    end
+    has_many :topics
+    has_many :posts, :through => :topics
 end
