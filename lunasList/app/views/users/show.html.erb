@@ -1,0 +1,9 @@
+ <tbody>
+        <% @user.pets.each do |a| %>
+        <tr>
+        <td><%=a.name%></td>
+        <td><%=a.age%></td>
+        <td><%=a.gender%></td>
+        </tr>
+        <%end%>
+    </tbody>
