@@ -1,4 +1,9 @@
 class VetsController < ApplicationController
+
+    def iframe_action
+        response.headers.delete "X-Frame-Options"
+        render_something
+    end
     def index
         @vets = Vet.search(params[:search])
     end
