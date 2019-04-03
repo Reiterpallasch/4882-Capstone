@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params.require(:event).permit(:description, :location, :time))
+    @event = Event.new(params.require(:event).permit(:description, :location, :city, :state, :time))
     if @event.save
       redirect_to event_url(@event), notice: 'Event was successfully created'
     else
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    if @event.update(params.require(:event).permit(:description, :location, :time))
+    if @event.update(params.require(:event).permit(:description, :location, :city, :state, :time))
       redirect_to event_url(@event), notice: 'Event was successfully updated'
     else
       flash.now[:alert] = 'Error! Unable to update event'
