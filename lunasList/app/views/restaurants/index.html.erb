@@ -1,0 +1,87 @@
+<main role="main" class="container">
+
+
+    <h1>restaurants</h1>
+<% if user_signed_in? && current_user.admin == true%>
+    <table class="table table-sm">
+    <thead>
+        <tr>
+
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+
+
+        <th scope="col">Type</th>
+
+	<th scope="col">Approved</th>
+        <th scope="col"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <% @restaurants.each do |restaurant| %>
+        <tr>
+
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= restaurant.type %></td>
+
+
+	<%if restaurant.approved == true%>
+            <td>Approved</td>
+            <%else%>
+            <td>Not Approved</td>
+<%end%>
+        
+        <td>
+ 
+            
+            <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
+            <%= link_to 'Destroy', restaurant_path(restaurant), method: :delete %> 
+            
+        </td> 
+        
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+    <p>
+        <%= link_to 'Create New restaurant', new_restaurant_path%>
+    </p>
+	<%else%>
+    <table class="table table-sm">
+    <thead>
+        <tr>
+
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+
+        <th scope="col">Type</th>
+        <th scope="col"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <% @restaurants.each do |restaurant| %>
+        <tr>
+	<%if restaurant.approved == true %>
+
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= restaurant.type %></td>
+
+
+	<%end%>
+        
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+	
+ 
+
+    <p>
+        <%= link_to 'Create New restaurant', new_restaurant_path%>
+    </p>
+<%end%>
+</main><!-- /.container -->

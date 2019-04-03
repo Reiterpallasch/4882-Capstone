@@ -1,0 +1,63 @@
+<%= form_with model: restaurant, local: true do |form| %>
+
+    <div class="field">
+        <%= form.label :name, 'Name'%>
+        <%= form.text_field :name, class: 'form-control' %>
+        <% if restaurant.errors.full_messages_for(:name).any?%>
+            <div class="invalid-feedback">
+                <% restaurant.errors.full_messages_for(:name).each do |error_message|%>
+                    <%= error_message %>.
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+
+
+
+    <div class="field">
+        <%= form.label :address%>
+        <%= form.text_field :address, class: 'form-control' %>
+        <% if restaurant.errors.full_messages_for(:address).any?%>
+            <div class="invalid-feedback">
+                <% restaurant.errors.full_messages_for(:address).each do |error_message|%>
+                    <%= error_message %>.
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+
+
+
+    <div class="field">
+        <%= form.label :style%>
+        <%= form.text_field :style, class: 'form-control' %>
+        <% if restaurant.errors.full_messages_for(:style).any?%>
+            <div class="invalid-feedback">
+                <% restaurant.errors.full_messages_for(:style).each do |error_message|%>
+                    <%= error_message %>.
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+
+
+<%if user_signed_in? %>
+<% if current_user.admin == true %>
+    <div class="field">
+        <%= form.label :approved%>
+        <%= form.text_field :approved, class: 'form-control' %>
+        <% if restaurant.errors.full_messages_for(:email).any?%>
+            <div class="invalid-feedback">
+                <% restaurant.errors.full_messages_for(:email).each do |error_message|%>
+                    <%= error_message %>.
+                <% end %>
+            </div>
+        <% end %>
+<% end %>
+<%end%>
+    </div>
+
+    <div class="actions">
+        <%= form.submit 'Submit', class: 'btn btn-primary'%>
+    </div>
+<% end %>

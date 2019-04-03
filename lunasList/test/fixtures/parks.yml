@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: parks
+#
+#  id         :integer          not null, primary key
+#  address    :string
+#  approved   :boolean
+#  leash      :string
+#  name       :string
+#  size       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+#  address    :string
+#  leash      :string
+#  name       :string
+#  size       :string
+
+#  approved   :boolean
+
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  size: MyString
+  leash: MyString
+
+two:
+  name: MyString
+  address: MyString
+  size: MyString
+  leash: MyString

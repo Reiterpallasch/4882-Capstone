@@ -1,0 +1,39 @@
+# == Schema Information
+#
+# Table name: restaurants
+#
+#  id         :integer          not null, primary key
+#  additional :text
+#  address    :string
+#  approved   :boolean
+#  name       :string
+#  style      :string
+#  type       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+#  additional :text
+#  address    :string
+#  name       :string
+#  type       :string
+
+#  approved   :boolean
+
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: McDonalds
+  address: 123 Main Street
+  additional: Popular burger restaurant
+  type: Fast-Food
+
+two:
+  name: Popeyes
+  address: 321 Main Street
+  additional: Popular Chicken restaurant
+  type: Fast-Food

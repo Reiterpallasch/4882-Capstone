@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: topics
+#
+#  id             :integer          not null, primary key
+#  last_post_at   :datetime
+#  name           :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  forum_id       :integer
+#  last_poster_id :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  last_poster_id: 1
+  last_post_at: 2019-03-29 18:41:32
+
+two:
+  name: MyString
+  last_poster_id: 1
+  last_post_at: 2019-03-29 18:41:32
