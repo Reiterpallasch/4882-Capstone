@@ -5,7 +5,33 @@
     <style>
     html body {background-image: url(image_path('pawprint.jpg'));}
     </style>
-        <h1>Welcome to the beginning</h1>
+        <h1>Welcome to Luna's List</h1>
+
+<h2>Upcoming Events</h2>
+	    <table class="table table-sm">
+    <thead>
+        <tr>
+        <th scope="col">Description</th>
+        <th scope="col">location</th>
+        <th scope="col">Date and Time</th>
+
+        <th scope="col"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <% @events.each do |each| %>
+        <tr>
+        <td><%= each.description %></td>
+        <td><%= each.location %></td>
+        <td><%= each.time %></td>
+	<td>
+            <%= link_to 'Show', event_path(each) %> </td>
+        
+        </tr>
+<%end%>
+    </tbody>
+    </table>
     <% if user_signed_in? %>
     <ul>
     <li> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
