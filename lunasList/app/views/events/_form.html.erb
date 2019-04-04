@@ -13,6 +13,30 @@
     </div>
 
     <div class="field">
+        <%= form.label :city%>
+        <%= form.text_field :city, class: 'form-control' %>
+        <% if event.errors.full_messages_for(:city).any?%>
+            <div class="invalid-feedback">
+                <% event.errors.full_messages_for(:city).each do |error_message|%>
+                    <%= error_message %>.
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+
+    <div class="field">
+        <%= form.label :state%>
+        <%= form.text_field :state, class: 'form-control' %>
+        <% if event.errors.full_messages_for(:state).any?%>
+            <div class="invalid-feedback">
+                <% event.errors.full_messages_for(:state).each do |error_message|%>
+                    <%= error_message %>.
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+
+    <div class="field">
         <%= form.label :description%>
         <%= form.text_field :description, class: 'form-control' %>
         <% if event.errors.full_messages_for(:description).any?%>

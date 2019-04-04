@@ -1,6 +1,11 @@
 class VetsController < ApplicationController
+
+    def iframe_action
+        response.headers.delete "X-Frame-Options"
+        render_something
+    end
     def index
-        @vets = Vet.all
+        @vets = Vet.search(params[:search])
     end
 
      def show
@@ -14,7 +19,7 @@ class VetsController < ApplicationController
 
     def create
 
-        @vet = Vet.new(params.require(:vet).permit(:address, :businessName, :name, :email, :city, :state, :phone))
+        @vet = Vet.new(params.require(:vet).permit(:address, :businessName, :name, :email, :city, :state, :phone, :approved))
  
         if @vet.save!
             redirect_to vets_url, notice: 'vet Successfully added'
