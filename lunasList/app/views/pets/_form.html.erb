@@ -5,6 +5,22 @@
         <%= form.file_field :image%>
     </div>
 
+    <div class="field">
+        <%= form.text_field :name, class: 'form-control', placeholder: 'Name'%>
+    </div>
+
+    <div class="field">
+        <%= form.text_field :age, class: 'form-control', placeholder: 'Age'%>
+    </div>
+
+    <div class="field">
+        <%= form.text_field :breed, class: 'form-control', placeholder: 'Breed'%>
+    </div>
+
+    <div class="field">
+        <%= form.text_field :gender, class: 'form-control', placeholder: 'Gender'%>
+    </div>
+
     <div class="actions">
         <%= form.submit 'Submit', class: 'btn btn-primary'%>
     </div>

@@ -4,19 +4,20 @@ class PetsController < ApplicationController
   end
   
   def new
-        # begin
-        #     @user = User.find(params[:user_id])
-        # rescue
-        #     redirect_to users_url, alert: 'user not found'
-        # end
+        begin
+            @user = User.find(params[:user_id])
+        rescue
+            redirect_to users_url, alert: 'user not found'
+        end
         @pet = Pet.new
   end
   
   def create
-        @pet = Pet.new(params.require(:pet).permit(:species, :name, :age, :gender, :image))
- 
+        @pet = Pet.new(params.require(:pet).permit(:breed, :name, :age, :gender, :image))
+        #@user = current_user
+        @pet.user_id = current_user.id
         if @pet.save!
-            redirect_to pets_url, notice: 'pet added'
+            redirect_to pet_url(@pet), notice: 'pet added'
         else
             flash.now[:alert] = 'failed to add'
             render :new
@@ -33,7 +34,7 @@ class PetsController < ApplicationController
         rescue
             redirect_to pets_url, alert: 'pet not found'
         end
-        if @pet.update(params.require(:pet).permit(:type, :name, :age, :gender, :image))
+        if @pet.update(params.require(:pet).permit(:breed, :name, :age, :gender, :image))
             redirect_to pets_url, notice: 'pet updated'
         else
             flash.now[:alert] = 'update failed'

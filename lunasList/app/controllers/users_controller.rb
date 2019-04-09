@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-def index
+    def index
         @users = User.all
         
     end
@@ -29,7 +29,6 @@ def index
 
     def edit
         @user = User.find(params[:id])
-        
     end
         
     def update
@@ -46,5 +45,5 @@ def index
         @user = User.find(params[:id])
         @user.destroy
         redirect_to users_url, notice: 'User destroyed'
-end
+    end
 end
