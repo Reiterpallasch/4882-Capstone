@@ -4,9 +4,9 @@
 #
 #  id         :integer          not null, primary key
 #  age        :integer
+#  breed      :string
 #  gender     :string
 #  name       :string
-#  type       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer
