@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'users/new', to: 'users#new', as: 'new_user'
   post 'users', to: 'users#create'
   get 'users/:id/edit', to: 'users#edit', as: 'edit_user'
+  get 'users/:user_id/pets/new', to: 'pets#new', as: 'new_pet'
   get 'users/:id', to: 'users#show', as: 'user'
   patch 'users/:id', to: 'users#update'
   put 'users/:id', to: 'users#update'
@@ -72,7 +73,7 @@ Rails.application.routes.draw do
 
     get 'pets', to: 'pets#index', as: 'pets_index'
     post 'users/:user_id/pets', to: 'pets#create', as: 'pets'
-    get 'users/:user_id/pets/new', to: 'pets#new', as: 'new_pet'
+    
     get 'pets/:id/edit', to: 'pets#edit', as: 'edit_pet'
     patch 'pets/:id', to: 'pets#update'
     put 'pets/:id', to: 'pets#update'
