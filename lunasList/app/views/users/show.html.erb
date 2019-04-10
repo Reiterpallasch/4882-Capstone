@@ -1,15 +1,19 @@
 
 <div class="container">
     <div class="row align-items-center justify-content-between">
-        <% if @user.image.attached?%>
+
+        <% if @user.avatars.exists?(1)%>
+        <%@avy = @user.avatars.find(1)%>
         <div class="col-lg-6 col-md-6 home-about-left">
-            <%= image_tag('@user.image', style: 'width:75%')if @user.image.attached?%>
+            <%= image_tag('avy.avatar', style: 'width:75%')if a.avatar.attached?%>
         </div>
         <% else%>
         <div class="col-lg-6 col-md-6 home-about-left">
             <%= image_tag('defaultProfile.jpeg', style: 'width:75%')%>
         </div>
+
         <%end%>
+
         <div class="col-lg-5 col-md-6 home-about-right">
             <h6>My Profile</h6>
             <h1 class="text-uppercase">Personal Details</h1>
@@ -17,6 +21,7 @@
             <%= link_to "EDIT PROFILE", edit_user_registration_path(current_user)%>
 <%= link_to "ADD PICTURE", edit2_user_path(@user.id)%>
         </div>
+
     </div>
 </div>
 
