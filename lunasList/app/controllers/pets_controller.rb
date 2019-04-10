@@ -2,7 +2,7 @@ class PetsController < ApplicationController
   def show
         @pet = Pet.find(params[user_id])
   end
-  
+
   def new
         begin
             @user = User.find(params[:user_id])
@@ -11,7 +11,7 @@ class PetsController < ApplicationController
         end
         @pet = Pet.new
   end
-  
+
   def create
         @pet = Pet.new(params.require(:pet).permit(:breed, :name, :age, :gender, :photo))
         #@user = current_user
@@ -23,11 +23,11 @@ class PetsController < ApplicationController
             render :new
         end
   end
-  
+
   def edit
         @pet = Pet.find(params[:id])
   end
-  
+
     def update
         begin
             @pet = Pet.find(params[:id])
@@ -48,8 +48,9 @@ class PetsController < ApplicationController
         rescue
             redirect_to users_url, alert: 'Pet not found'
         end
+        @user = current_user
         @pet.destroy
-        redirect_to pets_url, notice: 'Pet deleted'
+        redirect_to pets_url(@pet), notice: 'Pet deleted'
     end
 
     def show
@@ -59,5 +60,5 @@ class PetsController < ApplicationController
           redirect_to pet_url(@pet), alert: "Error: pet not found"
         end
     end
-    
+
 end
