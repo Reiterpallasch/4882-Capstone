@@ -17,7 +17,7 @@ class PicturesController < ApplicationController
         #@user = current_user
         @picture.user_id = current_user.id
         if @picture.save!
-            redirect_to user_url(current_user.id), notice: 'picture added'
+            redirect_to user_path(@picture.user_id), notice: 'picture added'
         else
             flash.now[:alert] = 'failed to add'
             render :new
@@ -35,7 +35,7 @@ class PicturesController < ApplicationController
             redirect_to pictures_url, alert: 'picture not found'
         end
         if @picture.update(params.require(:picture).permit(:picName, :avatar))
-            redirect_to home_url, notice: 'picture updated'
+            redirect_to user_path(@picture.user_id), notice: 'picture updated'
         else
             flash.now[:alert] = 'update failed'
             render :edit
