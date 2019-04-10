@@ -50,7 +50,7 @@ class PetsController < ApplicationController
         end
         @user = current_user
         @pet.destroy
-        redirect_to pets_url(@pet), notice: 'Pet deleted'
+        redirect_to user_url(@user), notice: 'Pet deleted'
     end
 
     def show
