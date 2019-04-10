@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     def show
         begin
             
-            @user = current_user
+            @user = User.find(params[:id])
         rescue
             redirect_to users_url, alert: 'Error: User not found'
         end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new(params.require(:user).permit(:address, :age, :city, :email,:encrypted_password, :first_name, :last_name, :phone, :state, :zip))
+        @user = User.new(params.require(:user).permit(:email,:encrypted_password, :image))
         if @user.save
             redirect_to user_url(@user), notice: 'User Successfully added'
         else
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
         
     def update
         @user = User.find(params[:id])
-        if @user.update(params.require(:user).permit(:address, :age, :city, :email, :encrypted_password, :first_name, :last_name, :membership_type, :middle_name, :phone, :state, :zip, :admin))
+        if @user.update(params.require(:user).permit(:email, :encrypted_password, :admin, :image))
             redirect_to user_url(@user), notice: 'User successfully updated'
         else
             flash.now[:alert] = 'Error! unable to update'

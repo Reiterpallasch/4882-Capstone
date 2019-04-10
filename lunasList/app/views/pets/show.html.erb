@@ -1,9 +1,10 @@
 <%= provide(:title, "Show Page")%>
 <main role="main" class="container'">
-
+<% if @pet.photo == "" %>
+<%else%>
     <div style="width:400px; height:auto">
-        <%= image_tag(@pet.image, style:'width:100%') %>
+        <%= image_tag(@pet.photo, style:'width:100%')if @pet.photo.attached? %>
     </div>
-
+<%end%>
     
 </main>

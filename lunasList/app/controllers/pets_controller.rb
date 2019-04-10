@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
   def show
-        @pets = Pet.all
+        @pet = Pet.find(params[user_id])
   end
   
   def new
@@ -13,7 +13,7 @@ class PetsController < ApplicationController
   end
   
   def create
-        @pet = Pet.new(params.require(:pet).permit(:breed, :name, :age, :gender, :image))
+        @pet = Pet.new(params.require(:pet).permit(:breed, :name, :age, :gender, :photo))
         #@user = current_user
         @pet.user_id = current_user.id
         if @pet.save!
@@ -34,8 +34,8 @@ class PetsController < ApplicationController
         rescue
             redirect_to pets_url, alert: 'pet not found'
         end
-        if @pet.update(params.require(:pet).permit(:breed, :name, :age, :gender, :image))
-            redirect_to pets_url, notice: 'pet updated'
+        if @pet.update(params.require(:pet).permit(:breed, :name, :age, :gender, :photo))
+            redirect_to pet_url(@pet), notice: 'pet updated'
         else
             flash.now[:alert] = 'update failed'
             render :edit
