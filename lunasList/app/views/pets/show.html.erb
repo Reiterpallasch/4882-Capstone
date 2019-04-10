@@ -1,23 +1,30 @@
 <%= provide(:title, "Show Page")%>
 <main role="main" class="container'">
-  <div class="row">
-      <div class="col-sm-6 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
-        <% if @pet.photo == "" %>
-        <%else%>
-            <div style="width:auto; height:auto">
-                <%= image_tag(@pet.photo, style:'width:100%', :class => "img-responsive")if @pet.photo.attached? %>
-            </div>
-        <%end%>
-      </div>
+  <div class="container">
+    <div class="section-header">
+        <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">About My Cute Pet</h2>
+    </div>
+    <br></br>
 
-      <div class="col-sm-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
-          <h3 class="column-title">Pets Information</h3>
-          <p>Name: <%=@pet.name%></p>
-          <p>Age: <%=@pet.age%></p>
-          <p>Gender: <%=@pet.name%></p>
-          <p>Breed: <%=@pet.breed%></p>
+    <div class="row">
+        <div class="col-sm-6 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
+          <% if @pet.photo == "" %>
+          <%else%>
+              <div style="width:auto; height:auto">
+                  <%= image_tag(@pet.photo, style:'width:100%', :class => "img-responsive")if @pet.photo.attached? %>
+              </div>
+          <%end%>
+        </div>
 
-      </div>
+        <div class="col-sm-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
+            <h3 class="column-title">Details</h3>
+            <p>Name: <%=@pet.name%></p>
+            <p>Age: <%=@pet.age%></p>
+            <p>Gender: <%=@pet.name%></p>
+            <p>Breed: <%=@pet.breed%></p>
+
+        </div>
+    </div>
   </div>
 
 
