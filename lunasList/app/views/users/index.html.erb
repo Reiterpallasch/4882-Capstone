@@ -14,7 +14,7 @@
           <%@picture = user.pictures.where(user_id: user.id).first%>
           <%= image_tag(@picture.avatar, style: 'width:100%')if @picture.avatar.attached?%>
           <% else%>
-          <%= image_tag('defaultProfile.jpeg', style: 'width:100%',:class => "card-img-top")%>
+          <%= image_tag('defaultProfile.jpeg', style: 'width:100%',:class => "card-img")%>
           <%end%>
           </div>
         <div class="card-body text-center">
