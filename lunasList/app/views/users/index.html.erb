@@ -9,7 +9,7 @@
     <!-- Member -->
     <div class="col-xl-3 col-md-6 mb-4">
       <div class="card mb-6 border-0 shadow">
-        <div class="card-img-top" width="100%" height="225">
+        <div class="card-img img-fluid ">
           <% if user.pictures.exists?%>
           <%@picture = user.pictures.where(user_id: user.id).first%>
           <%= image_tag(@picture.avatar, style: 'width:100%')if @picture.avatar.attached?%>
