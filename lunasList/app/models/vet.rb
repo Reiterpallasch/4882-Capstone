@@ -16,6 +16,8 @@
 #
 
 class Vet < ApplicationRecord
+  ratyrate_rateable "quality"
+  
 def self.search(searchcity)
   if searchcity
     if searchcity != ""
