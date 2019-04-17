@@ -15,7 +15,7 @@ class StoresController < ApplicationController
     def create
 
 
-        @store = Store.new(params.require(:store).permit(:address, :storeName, :city, :state, :phone, :approved))
+        @store = Store.new(params.require(:store).permit(:address, :storeName, :city, :state, :phone, :approved, :quality))
  
         if @store.save!
             redirect_to stores_url, notice: 'store Successfully added'
@@ -38,7 +38,7 @@ class StoresController < ApplicationController
 
             redirect_to stores_url, alert: 'Error: store not found'
         end
-        if @store.update(params.require(:store).permit(:address, :storeName, :city, :state, :phone, :approved))
+        if @store.update(params.require(:store).permit(:address, :storeName, :city, :state, :phone, :approved, :quality))
             redirect_to stores_url, notice: 'store successfully updated'
         else
             flash.now[:alert] = 'Error! unable to update'
