@@ -17,9 +17,16 @@
         <div class="col-lg-5 col-md-6 home-about-right">
             <h6>My Profile</h6>
             <h1 class="text-uppercase">Personal Details</h1>
-            <p>Email: <%=@user.email%></p>
+
+            <p><% if @user.name != ""%>Name: <%= @user.name%></br><%end%>
+            <% if @user.address != ""%>Address: <%= @user.address%></br><%end%>
+            <% if @user.city != ""%>City: <%= @user.city%></br><%end%>
+            <% if @user.state != ""%>State: <%= @user.state%></br><%end%>
+            <% if @user.zip != ""%>Zip: <%= @user.zip%></br><%end%>
+            <% if @user.phone != ""%>Phone: <%= @user.phone%></br><%end%>
+            Email: <%=@user.email%></p>
 <% if current_user.id == @user.id || current_user.admin? %>
-            <%= link_to "EDIT PROFILE", edit_user_registration_path(current_user)%>
+            <%= link_to "EDIT PROFILE ", edit_user_registration_path(current_user)%> |
 
 <% if @user.pictures.exists?%>
 <%@avy2 = @user.pictures.where(user_id: @user.id).first%>

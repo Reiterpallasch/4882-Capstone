@@ -3,14 +3,20 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
+#  address                :string
 #  admin                  :boolean
 #  business               :boolean
 #  businessName           :string
+#  city                   :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  name                   :string
+#  phone                  :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  state                  :string
+#  zip                    :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #

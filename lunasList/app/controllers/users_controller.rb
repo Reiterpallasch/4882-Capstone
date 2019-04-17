@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new(params.require(:user).permit(:email,:encrypted_password, :avatar))
+        @user = User.new(params.require(:user).permit(:email,:encrypted_password, :avatar, :name, :address, :city, :state, :zip, :phone))
         if @user.save
             redirect_to user_url(@user), notice: 'User Successfully added'
         else
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
         
     def update
         @user = User.find(params[:id])
-        if @user.update(params.require(:user).permit(:email, :encrypted_password, :admin, :avatar))
+        if @user.update(params.require(:user).permit(:email, :encrypted_password, :admin, :avatar, :name, :address, :city, :state, :zip, :phone))
             redirect_to user_url(@user), notice: 'User successfully updated'
         else
             flash.now[:alert] = 'Error! unable to update'
