@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  post '/rate' => 'rater#create', :as => 'rate'
   mount Thredded::Engine => '/forum'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -90,5 +91,7 @@ Rails.application.routes.draw do
     put 'pictures/:id', to: 'pictures#update'
     delete 'pictures/:id', to: 'pictures#destroy'
     get 'pictures/:id', to: 'pictures#show', as: 'picture'
+
+
 
 end

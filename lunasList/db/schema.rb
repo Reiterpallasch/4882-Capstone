@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_025440) do
+ActiveRecord::Schema.define(version: 2019_04_17_090732) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 2019_04_15_025440) do
     t.index ["user_id"], name: "index_avatars_on_user_id"
   end
 
+  create_table "average_caches", force: :cascade do |t|
+    t.integer "rater_id"
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "location"
     t.string "description"
@@ -69,6 +80,15 @@ ActiveRecord::Schema.define(version: 2019_04_15_025440) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "overall_averages", force: :cascade do |t|
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "overall_avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
   end
 
   create_table "parks", force: :cascade do |t|
@@ -115,6 +135,31 @@ ActiveRecord::Schema.define(version: 2019_04_15_025440) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "topic_id"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.integer "rater_id"
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "stars", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
+    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_rates_on_rater_id"
+  end
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.string "cacheable_type"
+    t.integer "cacheable_id"
+    t.float "avg", null: false
+    t.integer "qty", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
   end
 
   create_table "restaurants", force: :cascade do |t|

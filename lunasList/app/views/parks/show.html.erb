@@ -1,3 +1,4 @@
+
 <iframe
   width="600"
   height="450"
@@ -8,12 +9,14 @@
 
 <div class="row">
   <div class="small-2 large-2 columns">
-    <%= rating_for @park, current_user%>
+    <%= rating_for @park, @current_user%>
   </div>
 <br>
   <div class="small-2 large-2 columns">
     <% if current_user %>
-      Rate: <%= rating_for @park, "quality" %>
+      Quality: <%= rating_for @park, "quality", disable_after_rate: true, imdb_average: true %>
     <% end %>
   </div>
 </div>
+ <%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>
+
