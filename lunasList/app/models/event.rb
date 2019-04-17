@@ -14,6 +14,8 @@
 #
 
 class Event < ApplicationRecord
+    ratyrate_rateable "quality"
+    
     validates :location, presence: true
     validates :description, presence: true
     validates :time, presence: true
