@@ -22,7 +22,7 @@ class PetsController < ApplicationController
         @user.pets << @pet
 
         if @user.save
-            redirect_to user_url(@pet), notice: 'Pet added'
+            redirect_to user_url(@pet.user), notice: 'Pet added'
         else
             flash.now[:alert] = 'Failed to add'
             render :new
