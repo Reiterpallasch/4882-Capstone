@@ -18,12 +18,15 @@
             <h6>My Profile</h6>
             <h1 class="text-uppercase">Personal Details</h1>
             <p>Email: <%=@user.email%></p>
+<% if current_user.id == @user.id || current_user.admin? %>
             <%= link_to "EDIT PROFILE", edit_user_registration_path(current_user)%>
+
 <% if @user.pictures.exists?%>
 <%@avy2 = @user.pictures.where(user_id: @user.id).first%>
 <%= link_to "CHANGE PICTURE", edit_picture_path(@avy2)%>
 <%else%>
 <%= link_to "ADD PICTURE", new_picture_path(@user)%>
+<%end%>
 <%end%>
         </div>
 
@@ -35,9 +38,9 @@
         <div class="title text-center">
             <br></br>
             <h1 class="mb-10">My Cute Pets</h1>
-            <% if current_user || current_user.admin %>
+            <% if current_user.id == @user.id || current_user.admin? %>
             <div class="actions">
-                <%= link_to "New Pet", new_pet_path(@user), :class => 'btn btn-primary'%>
+                <%= link_to "New Pet", new_pet_path(@user.id), :class => 'btn btn-primary'%>
             </div
             <% else %>
               <br></br>
@@ -69,7 +72,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <%= link_to "View", pet_path(a), :class => "btn btn-sm btn-outline-secondary"%>
-                                <% if current_user.admin? or user_signed_in? %>
+                                <% if current_user.admin == true || @user.id == current_user.id %>
                                   <%= link_to "Edit", edit_pet_path(a), :class => "btn btn-sm btn-outline-secondary"%>
                                   <%= link_to "Delete", pet_path(a), method: :delete, :class => "btn btn-sm btn-outline-secondary"%>
                                 <% end %>
