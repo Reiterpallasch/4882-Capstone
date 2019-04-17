@@ -41,7 +41,7 @@
                 <%= link_to 'Forums', forum_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-               <%= link_to 'Members', users_path, class: 'nav-link' %>
+               <%= link_to 'Members', main_app.users_path, class: 'nav-link' %>
              </li>
                 <% if user_signed_in? %>
                 <li class ="nav-item"> <%= link_to "Profile", main_app.user_path(current_user.id), class: 'nav-link' %> </li>
