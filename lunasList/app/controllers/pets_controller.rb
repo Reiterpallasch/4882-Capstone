@@ -7,19 +7,24 @@ class PetsController < ApplicationController
         begin
             @user = User.find(params[:user_id])
         rescue
-            redirect_to users_url, alert: 'user not found'
+            redirect_to users_url, alert: 'User not found'
         end
         @pet = Pet.new
   end
 
   def create
+      begin
+        @user = User.find(params[:user_id])
+      rescue
+        redirect_to users_url, alert: 'User not found'
+      end
         @pet = Pet.new(params.require(:pet).permit(:breed, :name, :age, :gender, :photo))
-        #@user = current_user
-        @pet.user_id = current_user.id
-        if @pet.save!
-            redirect_to pet_url(@pet), notice: 'pet added'
+        @user.pets << @pet
+
+        if @user.save
+            redirect_to user_url(@pet.user), notice: 'Pet added'
         else
-            flash.now[:alert] = 'failed to add'
+            flash.now[:alert] = 'Failed to add'
             render :new
         end
   end
@@ -32,12 +37,12 @@ class PetsController < ApplicationController
         begin
             @pet = Pet.find(params[:id])
         rescue
-            redirect_to pets_url, alert: 'pet not found'
+            redirect_to users_url, alert: 'Pet not found'
         end
         if @pet.update(params.require(:pet).permit(:breed, :name, :age, :gender, :photo))
-            redirect_to pet_url(@pet), notice: 'pet updated'
+            redirect_to user_url(@pet.user), notice: 'Pet updated'
         else
-            flash.now[:alert] = 'update failed'
+            flash.now[:alert] = 'Update failed'
             render :edit
         end
     end
@@ -48,7 +53,7 @@ class PetsController < ApplicationController
         rescue
             redirect_to users_url, alert: 'Pet not found'
         end
-        @user = current_user
+        @user = @pet.user
         @pet.destroy
         redirect_to user_url(@user), notice: 'Pet deleted'
     end

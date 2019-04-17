@@ -1,5 +1,5 @@
 <%= form_with model: pet, local: true do |form| %>
-
+    <%= hidden_field_tag :user_id, user_id%>
     <div class="field">
         <%= form.label :photo %>
         <%= form.file_field :photo%>
