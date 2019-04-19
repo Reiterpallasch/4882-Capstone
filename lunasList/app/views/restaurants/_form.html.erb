@@ -66,15 +66,10 @@
 <%if user_signed_in? %>
 <% if current_user.admin == true %>
     <div class="field">
-        <%= form.label :approved%>
-        <%= form.text_field :approved, class: 'form-control' %>
-        <% if restaurant.errors.full_messages_for(:email).any?%>
-            <div class="invalid-feedback">
-                <% restaurant.errors.full_messages_for(:email).each do |error_message|%>
-                    <%= error_message %>.
-                <% end %>
-            </div>
-        <% end %>
+        <%= form.label :approved %>
+        <%= form.select :approved, options_for_select(["false","true"], selected: @restaurant.approved),class: 'form-control' %>
+</div>
+
 <% end %>
 <%end%>
     </div>

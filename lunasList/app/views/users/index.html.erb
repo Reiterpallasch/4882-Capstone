@@ -20,6 +20,16 @@
         <div class="card-body text-center">
           <h5 class="card-title mb-0"><%=user.email%></h5>
           <div class="card-text text-black-50"><%= link_to "View My Profile", user_path(user.id)%></div>
+            <% if current_user.admin? %>
+            <div class="card-text text-black-50">
+            <%if user.admin == true %>
+            Admin : Yes
+            <% else %>
+            Admin : No
+            <% end %>
+            </div>            
+            <%end%>
+
         </div>
       </div>
     </div>
