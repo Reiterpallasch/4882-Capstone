@@ -1,51 +1,63 @@
 <% provide(:title , 'Home')%>
-    <main role="main" class="container">
- 
-    <div class="starter-template">
-    <style>
-    html body {background-image: url(image_path('pawprint.jpg'));}
-    </style>
-        <h1>Welcome to Luna's List</h1>
-        <h3>A place dedicated to dog lovers</br>
-        Bringing our furry friends closer</h3>
+<body>
+  <section class="logo-header">
+   <div class="container h-100">
+      <div class="row h-100 align-items-center">
+         <div class="col-12 col-md-12 text-center header-content">
+            <h1>Welcome to Luna's List</h1>
+            <p>A place dedicated to dog lovers</br>
+        Bringing our furry friends closer</p>
+         </div>
+      </div>
+   </div>
+
+</section>
 </br></br></br>
-<h2>Upcoming Events</h2>
-	    <table class="table table-sm">
-    <thead>
-        <tr>
-        <th scope="col">Description</th>
-        <th scope="col">location</th>
-        <th scope="col">Date and Time</th>
+  <div class="container"
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <h2>Upcoming Events</h2>
+        <hr>
+        <ul class="event-list">
+          <% @events.each do |each| %>
+					<li>
+						<time>
+							<span class="day"><%= each.time.day %></span>
+							<span class="month"><%= each.time.strftime("%b")%></span>
+							<span class="year"><%= each.time.year %></span>
+							<span class="time"><%= each.time.time %></span>
+						</time>
+						<div class="info">
+							<h2 class="title"><%= each.description %></h2>
+							<p class="desc"><%= each.location %></p>
+              <p class="desc"><span class="fa fa-clock-o"></span> <%= each.time.strftime("%I:%M %P")%></p>
+							<ul>
+								<li style="width:50%;"><%= link_to 'View Event', event_path(each) %></li>
+							</ul>
+						</div>
 
-        <th scope="col"></th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <% @events.each do |each| %>
-        <tr>
-        <td><%= each.description %></td>
-        <td><%= each.location %></td>
-        <td><%= each.time %></td>
-	<td>
-            <%= link_to 'Show', event_path(each) %> </td>
-        
-        </tr>
-<%end%>
-    </tbody>
-    </table>
+					</li>
+          <% end %>
+				</ul>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <%= image_tag('LunasList.jpg', style: 'width:75%')%>
+      </div>
+    </div>
+  </div>
     <% if user_signed_in? %>
     <ul>
     <li><%= link_to "Feeding Tips", feedingtips_path %></li>
-<li><%= link_to "Etiquette Tips", etiquettetips_path %></li>
+    <li><%= link_to "Etiquette Tips", etiquettetips_path %></li>
     </ul>
     <% else %>
-   <p>
-<ul>
-<li><%= link_to "Feeding Tips", feedingtips_path %></li>
-<li><%= link_to "Etiquette Tips", etiquettetips_path %></li>
-</ul>
-</p>
- <% end %>
-    </div>
-    </main><!-- /.container -->
+    <p>
+      <ul>
+      <li><%= link_to "Feeding Tips", feedingtips_path %></li>
+      <li><%= link_to "Etiquette Tips", etiquettetips_path %></li>
+      </ul>
+    </p>
+    <% end %>
+
+
+</body><!-- /.container -->

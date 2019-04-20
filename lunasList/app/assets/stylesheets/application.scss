@@ -56,18 +56,18 @@ $thredded-button-font-size: 1.25rem;
 }
 
 body {
-    
+
     padding-top: 5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     background: url('LunasList2.png');
     background-position: 50% 50px;
     background-repeat: no-repeat;
-    
+
   }
 bg{
     background-image: image-url('LunasList.jpg');
-    background-size: 100%;   
+    background-size: 100%;
 }
 
 div.field{
@@ -88,4 +88,218 @@ div.field input{
 
 div.invalid-feedback{
   display: block;
+}
+
+
+
+
+////////////////////////////////////
+//HOME PAGE stylesheets
+.logo-header {
+	background: linear-gradient(rgba(62, 63, 64, 0.6), rgba(62, 63, 64, 0.6)), url(image_path('banner.jpg')) no-repeat center top;
+	background-size: cover;
+	background-position: center bottom;
+	color: #fff;
+	font-family: 'Nunito', sans-serif;
+  max-height: 680px;
+}
+
+.logo-header h1 {
+  font-family: 'Satisfy', sans-serif;
+  font-size: 55px;
+  color: #FFB03B;
+}
+
+.logo-header p {
+  font-family: 'PT Sans', sans-serif;
+  color: #fcfcfc;
+  font-size: 30px;
+	margin: 0 auto 2em auto;
+}
+
+.logo-header .logo {
+	margin: 0 auto 1em auto;
+}
+
+.logo-header .btn {
+	padding: 10px 26px;
+	background-color: #313131;
+	color: #FFF;
+	display: inline-block;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	text-decoration: none;
+	border: solid 2px #313131;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+
+@media (min-width: 992px) {
+	.logo-header {
+		height: 100vh;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.logo-header h1 {
+		font-size: 4rem;
+	}
+	.logo-header p {
+		width: 60%;
+	}
+}
+
+@media (max-width: 480px) {
+	.logo-header h1 {
+		font-size: 2.4rem;
+	}
+}
+
+/// EVENT LIST
+@import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
+
+
+.event-list {
+list-style: none;
+font-family: 'Lato', sans-serif;
+margin: 0px;
+padding: 0px;
+}
+.event-list > li {
+background-color: rgb(255, 255, 255);
+box-shadow: 0px 0px 5px rgb(51, 51, 51);
+box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
+padding: 0px;
+margin: 0px 0px 20px;
+}
+.event-list > li > time {
+display: inline-block;
+width: 100%;
+color: rgb(255, 255, 255);
+background-color: rgb(197, 44, 102);
+padding: 5px;
+text-align: center;
+text-transform: uppercase;
+}
+.event-list > li:nth-child(even) > time {
+background-color: rgb(165, 82, 167);
+}
+.event-list > li > time > span {
+display: none;
+}
+.event-list > li > time > .day {
+display: block;
+font-size: 56pt;
+font-weight: 100;
+line-height: 1;
+}
+.event-list > li time > .month {
+display: block;
+font-size: 24pt;
+font-weight: 900;
+line-height: 1;
+}
+.event-list > li > img {
+width: 100%;
+}
+.event-list > li > .info {
+padding-top: 5px;
+text-align: center;
+}
+.event-list > li > .info > .title {
+font-size: 17pt;
+font-weight: 700;
+margin: 0px;
+}
+.event-list > li > .info > .desc {
+font-size: 13pt;
+font-weight: 300;
+margin: 0px;
+}
+.event-list > li > .info > ul,
+.event-list > li > .social > ul {
+display: table;
+list-style: none;
+margin: 10px 0px 0px;
+padding: 0px;
+width: 100%;
+text-align: center;
+}
+.event-list > li > .social > ul {
+margin: 0px;
+}
+.event-list > li > .info > ul > li,
+.event-list > li > .social > ul > li {
+display: table-cell;
+cursor: pointer;
+color: rgb(30, 30, 30);
+font-size: 11pt;
+font-weight: 300;
+    padding: 3px 0px;
+}
+.event-list > li > .info > ul > li > a {
+display: block;
+width: 100%;
+color: rgb(30, 30, 30);
+text-decoration: none;
+}
+.event-list > li > .social > ul > li {
+    padding: 0px;
+}
+.event-list > li > .social > ul > li > a {
+    padding: 3px 0px;
+}
+.event-list > li > .info > ul > li:hover,
+.event-list > li > .social > ul > li:hover {
+color: rgb(30, 30, 30);
+background-color: rgb(200, 200, 200);
+}
+
+@media (min-width: 768px) {
+.event-list > li {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 120px;
+  padding: 0px;
+}
+.event-list > li > time,
+.event-list > li > img  {
+  display: inline-block;
+}
+.event-list > li > time,
+.event-list > li > img {
+  width: 120px;
+  float: left;
+}
+.event-list > li > .info {
+  background-color: rgb(245, 245, 245);
+  overflow: hidden;
+}
+.event-list > li > time,
+.event-list > li > img {
+  width: 120px;
+  height: 120px;
+  padding: 0px;
+  margin: 0px;
+}
+.event-list > li > .info {
+  position: relative;
+  height: 120px;
+  text-align: left;
+  padding-right: 40px;
+}
+.event-list > li > .info > .title,
+.event-list > li > .info > .desc {
+  padding: 0px 10px;
+}
+.event-list > li > .info > ul {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
+
+
 }

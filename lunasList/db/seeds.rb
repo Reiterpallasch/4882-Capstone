@@ -19,5 +19,3 @@ user1 = User.create(email: "test@google.com" , password: "google" , admin: true)
 user1.pets.create(name: 'mimi', age: 3, gender: 'female')
 user1.pets.create(name: 'mino', age: 2, gender: 'male')
 user1.pets.create(name: 'nana', age: 1, gender: 'female')
-
-
