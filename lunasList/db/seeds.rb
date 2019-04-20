@@ -9,10 +9,10 @@
 #============================
 #Event seed data
 
-Event.create!(location: "University of Memphis", description: "dog owner meeting", time: "2019-5-20 15:00")
-Event.create!(location: "Botanic Garden", description: "cat owner meeting", time: "2019-6-20 15:00")
-Event.create!(location: "Somewhere in Memphis", description: "pet owner meeting", time: "2019-7-20 15:00")
-Event.create!(location: "Anywhere is ok", description: "just meeting", time: "2019-8-20 15:00")
+Event.create!(location: "University of Memphis", description: "dog owner meeting", time: "2019-5-16 15:00")
+Event.create!(location: "Botanic Garden", description: "cat owner meeting", time: "2019-6-17 15:00")
+Event.create!(location: "Somewhere in Memphis", description: "pet owner meeting", time: "2019-7-18 15:00")
+Event.create!(location: "Anywhere is ok", description: "just meeting", time: "2019-8-19 15:00")
 Event.create!(location: "No idea", description: "dog racing", time: "2019-9-20 15:00")
 
 user1 = User.create(email: "test@google.com" , password: "google" , admin: true)
