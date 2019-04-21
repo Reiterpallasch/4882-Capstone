@@ -1,0 +1,41 @@
+<header class="bg-transparents text-center py-5 mb-4">
+  <div class="container">
+    <h1 class="font-weight-light text-dark">Meet Our Members</h1>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <% @users.each do |user| %>
+    <!-- Member -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card mb-6 border-0 shadow">
+        <div class="card-img img-fluid ">
+          <% if user.pictures.exists?%>
+          <%@picture = user.pictures.where(user_id: user.id).first%>
+          <%= image_tag(@picture.avatar, style: 'width:100%')if @picture.avatar.attached?%>
+          <% else%>
+          <%= image_tag('defaultProfile.jpeg', style: 'width:100%',:class => "card-img")%>
+          <%end%>
+          </div>
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0"><%=user.email%></h5>
+          <div class="card-text text-black-50"><%= link_to "View My Profile", user_path(user.id)%></div>
+            <% if current_user.admin? %>
+            <div class="card-text text-black-50">
+            <%if user.admin == true %>
+            Admin : Yes
+            <% else %>
+            Admin : No
+            <% end %>
+            </div>            
+            <%end%>
+
+        </div>
+      </div>
+    </div>
+    <!-- Member -->
+    <% end %>
+  </div>
+  <!-- /.row -->
+
+</div>
