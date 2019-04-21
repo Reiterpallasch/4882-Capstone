@@ -1,3 +1,4 @@
+
 <iframe
   width="600"
   height="450"
@@ -5,3 +6,17 @@
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBoj1FdGM5fcqBdj9MCTVFlEhm3FTcoUzY
     &q=<%= @park.address.downcase.tr!(" ", "+")%>,<%=@park.city%>+<%=@park.state%>" allowfullscreen>
 </iframe>
+
+<div class="row">
+  <div class="small-2 large-2 columns">
+    <%= rating_for @park, @current_user%>
+  </div>
+<br>
+  <div class="small-2 large-2 columns">
+    <% if current_user %>
+      Quality: <%= rating_for @park, "quality", disable_after_rate: true, imdb_average: true %>
+    <% end %>
+  </div>
+</div>
+ <%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>
+
