@@ -31,14 +31,13 @@
                 <h2 class="title"><%= each.title %></h2>
                 <p class="desc"><%= each.location %></p>
                 <p class="desc"><span class="fa fa-clock-o"></span> <%= each.time.strftime("%I:%M %P")%></p>
-                <ul>
-                  <li style="width:50%;"><%= link_to 'View Event', event_path(each) %></li>
-                </ul>
               </div>
 
             </li>
             <% end %>
+            <%= link_to "View More Details", events_path %>
           </ul>
+          <br><br>
         </div>
         <div class="col-md-6 luna-img">
           <h2>Tips</h2>
