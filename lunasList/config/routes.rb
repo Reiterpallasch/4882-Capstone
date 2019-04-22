@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 
   mount Thredded::Engine => '/forum'
   devise_for :users
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     #------- EVENT ------------
     get 'events', to: 'events#index', as: 'events'
+    get 'events/pending', to: 'events#pending', as: 'events_pending'
     get 'events/edit', to: 'events#edit'
     post 'events', to: 'events#create'
     get 'events/new', to: 'events#new', as: 'new_event'
@@ -75,7 +76,7 @@ Rails.application.routes.draw do
 
     get 'pets', to: 'pets#index', as: 'pets_index'
     post 'users/:user_id/pets', to: 'pets#create', as: 'pets'
-    
+
     get 'pets/:id/edit', to: 'pets#edit', as: 'edit_pet'
     patch 'pets/:id', to: 'pets#update'
     put 'pets/:id', to: 'pets#update'
@@ -84,7 +85,7 @@ Rails.application.routes.draw do
 
     get 'pictures', to: 'pictures#index', as: 'pictures_index'
     post 'users/:user_id/pictures', to: 'pictures#create', as: 'pictures'
-    
+
     get 'pictures/:id/edit', to: 'pictures#edit', as: 'edit_picture'
     patch 'pictures/:id', to: 'pictures#update'
     put 'pictures/:id', to: 'pictures#update'

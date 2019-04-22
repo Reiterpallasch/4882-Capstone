@@ -3,6 +3,9 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  def pending
+    @events = Event.all
+  end
   def show
     begin
       @event = Event.find(params[:id])

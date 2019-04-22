@@ -48,7 +48,9 @@
 #events {
   padding: 60px 0 60px 0;
 }
-
+#schedule .event-pane {
+  transition: ease-in-out .2s;
+}
 #events .event-item {
   border-bottom: 1px solid #cad4f6;
   padding-top: 15px;
@@ -104,4 +106,9 @@
   font-style: italic;
   color: #152b79;
   margin-bottom: 0;
+}
+
+#event .new_button{
+  display: flex;
+  justify-content:flex-end; 
 }
