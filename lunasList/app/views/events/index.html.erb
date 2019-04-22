@@ -6,25 +6,44 @@
         <h2>Our Next Events</h2>
         <p>Welcome you to join us for our events</p>
       </div>
+      <div class="container"
       <div class="content row justify-content-center">
         <!-- event list -->
         <% @events.each do |each| %>
           <div class="row event-item">
             <div class="col-md-2">
-              <time><%= each.time.day %></time>
+              <p>
               <time><%= each.time.strftime("%b")%></time>
+              <time><%= each.time.day %>,</time>
               <time><%= each.time.year %></time>
+              </p>
+              <p><%= each.time.strftime("%I:%M %P")%></p>
             </div>
-            <div class="col-md-2"><%= each.time.strftime("%I:%M %P")%></div>
-            <div class="col-md-8">
-              <h4><%= each.description %></h4>
-              <p><%= each.location %></p>
+            <div class="col-md-9">
+              <h4><%= each.title %></h4>
+              <p><%= each.description %></p>
+              <p><span class="fa fa-map-marker"> <%= each.location %></span></p>
             </div>
+            <div class="col-md-1">
+              <br>
+              <td>
+                <%= link_to edit_event_path(each), class: 'btn btn-default' do %>
+                  <span class="fa fa-edit"></span>
+
+                <% end %>
+              </td>
+              <td>
+                <%= link_to each, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' do %>
+                  <span class="fa fa-trash-o"></span>
+                <% end %>
+              </td>
+            </div>
+
           </div>
-          <br></br>
           <% end %>
 
         <!-- End Schdule Day 1 -->
+      </div>
       </div>
 
     </div>

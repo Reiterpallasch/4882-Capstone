@@ -57,7 +57,7 @@
 }
 
 #event .event-item:hover {
-  background-color: #fff;
+  background-color: #C0C0C0;
 }
 
 #events .event-item time {
@@ -88,13 +88,18 @@
   margin-bottom: 5px;
 }
 
-#events .event-item h4 span {
+#events .event-item p span {
   font-style: italic;
-  color: #19328e;
+  color: #008B8B;
+  font-weight: normal;
+  font-size: 14px;
+}
+#events .event-item span {
+  font-style: italic;
+  color: #DF252D;
   font-weight: normal;
   font-size: 16px;
 }
-
 #events .event-item p {
   font-style: italic;
   color: #152b79;
