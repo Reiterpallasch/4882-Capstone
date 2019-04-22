@@ -8,3 +8,16 @@
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBoj1FdGM5fcqBdj9MCTVFlEhm3FTcoUzY
     &q=<%= @vet.address.downcase.tr!(" ", "+")%>,<%=@vet.city%>+<%=@vet.state%>" allowfullscreen>
 </iframe>
+
+<div class="row">
+  <div class="small-2 large-2 columns">
+    <%= rating_for @vet, @current_user%>
+  </div>
+<br>
+  <div class="small-2 large-2 columns">
+    <% if current_user %>
+      Quality: <%= rating_for @vet, "quality", disable_after_rate: true, imdb_average: true %>
+    <% end %>
+  </div>
+</div>
+ <%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>

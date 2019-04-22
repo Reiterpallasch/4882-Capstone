@@ -19,3 +19,16 @@
     <%= link_to 'Back', events_path%>
 </p>
 </main>
+
+<div class="row">
+  <div class="small-2 large-2 columns">
+    <%= rating_for @event, @current_user%>
+  </div>
+<br>
+  <div class="small-2 large-2 columns">
+    <% if current_user %>
+      Quality: <%= rating_for @event, "quality", disable_after_rate: true, imdb_average: true %>
+    <% end %>
+  </div>
+</div>
+<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>
