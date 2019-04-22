@@ -3,14 +3,14 @@
   <section id="events" class="section-with-bg">
     <div class="container wow fadeInUp">
       <div class="section-header">
-        <h2>Our Next Events</h2>
-        <p>Welcome you to join us for our events</p>
+        <h2>Pending Events</h2>
+        <p>Click edit icon to approve an event.</p>
       </div>
       <div class="container"
       <div class="content row justify-content-center">
         <!-- event list -->
         <% @events.each do |each| %>
-        <% if each.approved == true %>
+        <% if each.approved == false %>
 
           <div class="row event-item">
             <div class="col-md-2">
@@ -28,11 +28,10 @@
             </div>
             <div class="col-md-1">
               <br>
-
-              <% if user_signed_in? && current_user.admin == true %>
               <td>
                 <%= link_to edit_event_path(each), class: 'btn btn-default' do %>
                   <span class="fa fa-edit"></span>
+
                 <% end %>
               </td>
               <td>
@@ -40,7 +39,7 @@
                   <span class="fa fa-trash-o"></span>
                 <% end %>
               </td>
-              <% end %>
+
             </div>
 
           </div>
@@ -55,12 +54,8 @@
     </div>
     <br>
     <div class="new_button">
-        <%= link_to 'New Event', new_event_path, :class => 'btn btn-success'%>
-        <% if user_signed_in? && current_user.admin == true %>
-          <%= link_to 'Pending Events', events_pending_path, :class => 'btn btn-success'%>
-        <% end %>
+        <%= link_to 'Back', events_path%>
     </div>
-
 
   </section>
 </main>
