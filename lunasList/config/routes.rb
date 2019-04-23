@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     get 'home', to: 'pages#home', as: 'home'
 	get 'feedingtips', to:'pages#feedingtips', as: 'feedingtips'
 	get 'etiquettetips',to:'pages#etiquettetips',as:'etiquettetips'
-
+	get 'caretips',to:'pages#caretips',as:'caretips'
+	
     #------- EVENT ------------
     get 'events', to: 'events#index', as: 'events'
     get 'events/edit', to: 'events#edit'
