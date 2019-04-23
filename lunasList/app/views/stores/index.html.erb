@@ -1,0 +1,106 @@
+<main role="main" class="container">
+
+
+    <h1>Stores</h1>
+	<p>
+	<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBoj1FdGM5fcqBdj9MCTVFlEhm3FTcoUzY
+    &q=dog+friendly+stores+in+<%=request.location.city%>+<%=request.location.state%>" allowfullscreen>
+</iframe></p>
+	</br>
+
+<h4>Search by City</h4>
+<p>
+	<%= form_tag stores_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :city => nil%>
+<% end %>
+</p></br>
+<% if user_signed_in? && current_user.admin == true%>
+    <table class="table table-sm">
+    <thead>
+        <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Phone</th>
+	<th scope="col">Approved</th>
+        <th scope="col"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <% @stores.each do |store| %>
+        <tr>
+        <td><%= store.storeName %></td>
+        <td><%= store.address %></td>
+        <td><%= store.city %></td>
+        <td><%= store.state %></td>
+        <td><%= store.phone %></td>
+	<%if store.approved == true%>
+            <td>Approved</td>
+            <%else%>
+            <td>Not Approved</td>
+<%end%>
+        
+        <td>
+ 
+            <%= link_to 'Show', store_path(store) %>
+            <%= link_to 'Edit', edit_store_path(store) %>
+            <%= link_to 'Destroy', store_path(store), method: :delete %> 
+            
+        </td> 
+        
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+
+    <p>
+        <%= link_to 'Create New Store', new_store_path%>
+    </p>
+	<%else%>
+    <table class="table table-sm">
+    <thead>
+        <tr>
+
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Phone</th>
+
+        <th scope="col"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <% @stores.each do |store| %>
+        <tr>
+	<%if store.approved == true %>
+
+        <td><%= store.storeName %></td>
+        <td><%= store.address %></td>
+        <td><%= store.city %></td>
+        <td><%= store.state %></td>
+        <td><%= store.phone %></td>
+
+        <%= link_to 'Show', store_path(store) %>
+	<%end%>
+        
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+	
+ 
+
+    <p>
+        <%= link_to 'Create New Store', new_store_path%>
+    </p>
+<%end%>
+</main><!-- /.container -->

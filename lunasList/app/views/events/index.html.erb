@@ -1,67 +1,67 @@
-<main role="main" class="container">
-
-
-    <h1>EVENTS</h1>
-<% if user_signed_in? && current_user.admin == true%>
-    <table class="table table-sm">
-    <thead>
-        <tr>
-        <th scope="col">Description</th>
-        <th scope="col">location</th>
-        <th scope="col">Date and Time</th>
-		<th scope="col">Approved</th>
-        <th scope="col"></th>
-
-        </tr>
-    </thead>
-    <tbody>
+<body>
+<main>
+  <section id="events" class="section-with-bg">
+    <div class="container wow fadeInUp">
+      <div class="section-header">
+        <h2>Our Next Events</h2>
+        <p>Welcome you to join us for our events</p>
+      </div>
+      <div class="container"
+      <div class="content row justify-content-center">
+        <!-- event list -->
         <% @events.each do |each| %>
-        <tr>
-        <td><%= each.description %></td>
-        <td><%= each.location %></td>
-        <td><%= each.time %></td>
-		<%if each.approved == true%>
-            <td>Approved</td>
-            <%else%>
-            <td>Not Approved</td>
-<%end%>
-        <td>
-            <%= link_to 'Show', event_path(each) %> 
-            <%= link_to 'Edit', edit_event_path(each) %>
-            <%= link_to 'Destroy', event_path(each), method: :delete %> 
-        </td>
-        
-        </tr>
+        <% if each.approved == true %>
+
+          <div class="row event-item">
+            <div class="col-md-2">
+              <p>
+              <time><%= each.time.strftime("%b")%></time>
+              <time><%= each.time.day %>,</time>
+              <time><%= each.time.year %></time>
+              </p>
+              <p><%= each.time.strftime("%I:%M %P")%></p>
+            </div>
+            <div class="col-md-9">
+              <h4><%= each.title %></h4>
+              <p><%= each.description %></p>
+              <p><span class="fa fa-map-marker"> <%= each.location %></span></p>
+            </div>
+            <div class="col-md-1">
+              <br>
+
+              <% if user_signed_in? && current_user.admin == true %>
+              <td>
+                <%= link_to edit_event_path(each), class: 'btn btn-default' do %>
+                  <span class="fa fa-edit"></span>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to each, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' do %>
+                  <span class="fa fa-trash-o"></span>
+                <% end %>
+              </td>
+              <% end %>
+            </div>
+
+          </div>
+          <% end %>
+          <% end %>
+
+        <!-- End Schdule Day 1 -->
+
+      </div>
+      </div>
+
+    </div>
+    <br>
+    <div class="new_button">
+        <%= link_to 'New Event', new_event_path, :class => 'btn btn-success'%>
+        <% if user_signed_in? && current_user.admin == true %>
+          <%= link_to 'Pending Events', events_pending_path, :class => 'btn btn-success'%>
         <% end %>
-    </tbody>
-    </table>
-    <%else%>
-	    <table class="table table-sm">
-    <thead>
-        <tr>
-        <th scope="col">Description</th>
-        <th scope="col">location</th>
-        <th scope="col">Date and Time</th>
+    </div>
 
-        <th scope="col"></th>
 
-        </tr>
-    </thead>
-    <tbody>
-        <% @events.each do |each| %>
-        <tr>
-        <td><%= each.description %></td>
-        <td><%= each.location %></td>
-        <td><%= each.time %></td>
-
-        
-        </tr>
-        <% end %>
-    </tbody>
-    </table>
-	<%end%>
-    <p>
-        <%= link_to 'Create New Event', new_event_path%>
-    </p>
-
-</main><!-- /.container -->
+  </section>
+</main>
+</body><!-- /.container -->

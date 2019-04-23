@@ -5,7 +5,7 @@ class VetsController < ApplicationController
         render_something
     end
     def index
-        @vets = Vet.all
+        @vets = Vet.search(params[:search])
     end
 
      def show
@@ -19,7 +19,7 @@ class VetsController < ApplicationController
 
     def create
 
-        @vet = Vet.new(params.require(:vet).permit(:address, :businessName, :name, :email, :city, :state, :phone))
+        @vet = Vet.new(params.require(:vet).permit(:address, :businessName, :name, :email, :city, :state, :phone, :approved, :quality))
  
         if @vet.save!
             redirect_to vets_url, notice: 'vet Successfully added'
@@ -40,7 +40,7 @@ class VetsController < ApplicationController
         rescue
             redirect_to vets_url, alert: 'Error: vet not found'
         end
-        if @vet.update(params.require(:vet).permit(:address, :businessName, :name, :email, :city, :state, :phone, :approved))
+        if @vet.update(params.require(:vet).permit(:address, :businessName, :name, :email, :city, :state, :phone, :approved, :quality))
             redirect_to vets_url, notice: 'vet successfully updated'
         else
             flash.now[:alert] = 'Error! unable to update'

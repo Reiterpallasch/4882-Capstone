@@ -11,7 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2019_04_01_174605) do
+
+ActiveRecord::Schema.define(version: 2019_04_17_173934) do
+
+
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -34,6 +37,24 @@ ActiveRecord::Schema.define(version: 2019_04_01_174605) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "avatars", force: :cascade do |t|
+    t.string "picName"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_avatars_on_user_id"
+  end
+
+  create_table "average_caches", force: :cascade do |t|
+    t.integer "rater_id"
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "location"
@@ -42,6 +63,9 @@ ActiveRecord::Schema.define(version: 2019_04_01_174605) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "approved"
+    t.string "city"
+    t.string "state"
+    t.string "title"
   end
 
   create_table "forums", force: :cascade do |t|
@@ -63,23 +87,55 @@ ActiveRecord::Schema.define(version: 2019_04_01_174605) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "overall_averages", force: :cascade do |t|
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "overall_avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
+  end
+
   create_table "parks", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.string "size"
     t.string "leash"
+    t.string "city"
+    t.string "state"
+    t.string "size"
+    t.boolean "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "approved"
+    t.string "trails"
+    t.string "gated"
+    t.string "waterbodies"
   end
 
   create_table "pets", force: :cascade do |t|
-    t.string "type"
+    t.string "breed"
     t.string "name"
     t.integer "age"
     t.string "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "pics", force: :cascade do |t|
+    t.string "picName"
+    t.integer "user_id_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id_id"], name: "index_pics_on_user_id_id"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "picName"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pictures_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -87,6 +143,31 @@ ActiveRecord::Schema.define(version: 2019_04_01_174605) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "topic_id"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.integer "rater_id"
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "stars", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
+    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_rates_on_rater_id"
+  end
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.string "cacheable_type"
+    t.integer "cacheable_id"
+    t.float "avg", null: false
+    t.integer "qty", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -98,6 +179,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_174605) do
     t.datetime "updated_at", null: false
     t.boolean "approved"
     t.string "style"
+    t.string "city"
+    t.string "state"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -360,6 +443,12 @@ ActiveRecord::Schema.define(version: 2019_04_01_174605) do
     t.boolean "admin"
     t.boolean "business"
     t.string "businessName"
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

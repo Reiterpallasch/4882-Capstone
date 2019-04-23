@@ -1,11 +1,46 @@
 <%= form_with model: event, local: true do |form| %>
 
+<div class="field">
+    <%= form.label :title%>
+    <%= form.text_field :title, class: 'form-control' %>
+    <% if event.errors.full_messages_for(:title).any?%>
+        <div class="invalid-feedback">
+            <% event.errors.full_messages_for(:title).each do |error_message|%>
+                <%= error_message %>.
+            <% end %>
+        </div>
+    <% end %>
+</div>
     <div class="field">
         <%= form.label :location%>
         <%= form.text_field :location, class: 'form-control' %>
         <% if event.errors.full_messages_for(:location).any?%>
             <div class="invalid-feedback">
                 <% event.errors.full_messages_for(:location).each do |error_message|%>
+                    <%= error_message %>.
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+
+    <div class="field">
+        <%= form.label :city%>
+        <%= form.text_field :city, class: 'form-control' %>
+        <% if event.errors.full_messages_for(:city).any?%>
+            <div class="invalid-feedback">
+                <% event.errors.full_messages_for(:city).each do |error_message|%>
+                    <%= error_message %>.
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+
+    <div class="field">
+        <%= form.label :state%>
+        <%= form.text_field :state, class: 'form-control' %>
+        <% if event.errors.full_messages_for(:state).any?%>
+            <div class="invalid-feedback">
+                <% event.errors.full_messages_for(:state).each do |error_message|%>
                     <%= error_message %>.
                 <% end %>
             </div>
@@ -23,7 +58,7 @@
             </div>
         <% end %>
     </div>
-    
+
     <div class="form-row">
             <div class="col-md-4 mb-3">
                 <div class="field">
@@ -32,16 +67,16 @@
                     <%= form.datetime_select(:time, :start_year => 2019, :ampm => true, :default => 0.days.from_now.in_time_zone(@timezone))%>
                 </div>
             </div>
-        
+
     </div>
 <%if user_signed_in? %>
 <% if current_user.admin == true %>
     <div class="field">
         <%= form.label :approved%>
         <%= form.text_field :approved, class: 'form-control' %>
-        <% if park.errors.full_messages_for(:email).any?%>
+        <% if event.errors.full_messages_for(:email).any?%>
             <div class="invalid-feedback">
-                <% park.errors.full_messages_for(:email).each do |error_message|%>
+                <% event.errors.full_messages_for(:email).each do |error_message|%>
                     <%= error_message %>.
                 <% end %>
             </div>

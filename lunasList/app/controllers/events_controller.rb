@@ -3,6 +3,9 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  def pending
+    @events = Event.all
+  end
   def show
     begin
       @event = Event.find(params[:id])
@@ -17,7 +20,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params.require(:event).permit(:description, :location, :time))
+
+    @event = Event.new(params.require(:event).permit(:title, :description, :location, :city, :state, :time, :quality))
+
     if @event.save
       redirect_to event_url(@event), notice: 'Event was successfully created'
     else
@@ -32,7 +37,9 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    if @event.update(params.require(:event).permit(:description, :location, :time))
+
+    if @event.update(params.require(:event).permit(:title, :description, :location, :city, :state, :time, :quality))
+
       redirect_to event_url(@event), notice: 'Event was successfully updated'
     else
       flash.now[:alert] = 'Error! Unable to update event'
@@ -45,5 +52,5 @@ class EventsController < ApplicationController
     @event.destroy
     redirect_to events_url, notice: 'Event was successfully destroyed'
   end
-  
+
 end

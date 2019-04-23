@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-def index
+    def index
         @users = User.all
         
     end
@@ -7,7 +7,7 @@ def index
     def show
         begin
             
-            @user = current_user
+            @user = User.find(params[:id])
         rescue
             redirect_to users_url, alert: 'Error: User not found'
         end
@@ -18,7 +18,7 @@ def index
     end
 
     def create
-        @user = User.new(params.require(:user).permit(:address, :age, :city, :email,:encrypted_password, :first_name, :last_name, :phone, :state, :zip))
+        @user = User.new(params.require(:user).permit(:email,:encrypted_password, :avatar, :name, :address, :city, :state, :zip, :phone))
         if @user.save
             redirect_to user_url(@user), notice: 'User Successfully added'
         else
@@ -29,12 +29,15 @@ def index
 
     def edit
         @user = User.find(params[:id])
-        
+    end
+
+    def edit2
+        @user = User.find(params[:id])
     end
         
     def update
         @user = User.find(params[:id])
-        if @user.update(params.require(:user).permit(:address, :age, :city, :email, :encrypted_password, :first_name, :last_name, :membership_type, :middle_name, :phone, :state, :zip, :admin))
+        if @user.update(params.require(:user).permit(:email, :encrypted_password, :admin, :avatar, :name, :address, :city, :state, :zip, :phone))
             redirect_to user_url(@user), notice: 'User successfully updated'
         else
             flash.now[:alert] = 'Error! unable to update'
@@ -46,5 +49,5 @@ def index
         @user = User.find(params[:id])
         @user.destroy
         redirect_to users_url, notice: 'User destroyed'
-end
+    end
 end

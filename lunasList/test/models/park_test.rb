@@ -2,25 +2,19 @@
 #
 # Table name: parks
 #
-#  id         :integer          not null, primary key
-#  address    :string
-#  approved   :boolean
-#  leash      :string
-#  name       :string
-#  size       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
-
-#  address    :string
-#  leash      :string
-#  name       :string
-#  size       :string
-
-#  approved   :boolean
-
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  address     :string
+#  approved    :boolean
+#  city        :string
+#  gated       :string
+#  leash       :string
+#  name        :string
+#  size        :string
+#  state       :string
+#  trails      :string
+#  waterbodies :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 require 'test_helper'

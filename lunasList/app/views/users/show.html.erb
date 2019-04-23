@@ -1,0 +1,96 @@
+
+<div class="container">
+    <div class="row align-items-center justify-content-between">
+
+        <% if @user.pictures.exists?%>
+        <%@picture = @user.pictures.where(user_id: @user.id).first%>
+        <div class="col-lg-6 col-md-6 home-about-left">
+            <%= image_tag(@picture.avatar, style: 'width:75%')if @picture.avatar.attached?%>
+        </div>
+        <% else%>
+        <div class="col-lg-6 col-md-6 home-about-left">
+            <%= image_tag('defaultProfile.jpeg', style: 'width:75%')%>
+        </div>
+
+        <%end%>
+
+        <div class="col-lg-5 col-md-6 home-about-right">
+            <h6>My Profile</h6>
+            <h1 class="text-uppercase">Personal Details</h1>
+
+            <p><% if @user.name != ""%>Name: <%= @user.name%></br><%end%>
+            <% if @user.address != ""%>Address: <%= @user.address%></br><%end%>
+            <% if @user.city != ""%>City: <%= @user.city%></br><%end%>
+            <% if @user.state != ""%>State: <%= @user.state%></br><%end%>
+            <% if @user.zip != ""%>Zip: <%= @user.zip%></br><%end%>
+            <% if @user.phone != ""%>Phone: <%= @user.phone%></br><%end%>
+            Email: <%=@user.email%></p>
+<% if current_user.id == @user.id || current_user.admin? %>
+    <% if current_user.admin? && current_user.id != @user.id %>
+        <%= link_to "EDIT PROFILE ", edit2_user_path(@user)%> |
+    <% else %>
+            <%= link_to "EDIT PROFILE ", edit_user_registration_path(@user)%> |
+    <% end %>
+<% if @user.pictures.exists?%>
+<%@avy2 = @user.pictures.where(user_id: @user.id).first%>
+<%= link_to "CHANGE PICTURE", edit_picture_path(@avy2)%>
+<%else%>
+<%= link_to "ADD PICTURE", new_picture_path(@user)%>
+<%end%>
+<%end%>
+        </div>
+
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="menu-content  col-lg-7">
+        <div class="title text-center">
+            <br></br>
+            <h1 class="mb-10">My Cute Pets</h1>
+            <% if current_user.id == @user.id || current_user.admin? %>
+            <div class="actions">
+                <%= link_to "New Pet", new_pet_path(@user.id), :class => 'btn btn-primary'%>
+            </div
+            <% else %>
+              <br></br>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="row">
+    <% @user.pets.each do |a| %>
+        <div class="col-md-4">
+
+            <div class="card mb-4 box-shadow">
+                <div class="card-img-top" width="100%" height="225">
+                    <% if a.photo.attached?%>
+                      <%= image_tag(a.photo, style: 'width:100%')%>
+                    <% else %>
+                      <%= image_tag('LunasList2.png', style: 'width:100%',:class => "card-img-top")%>
+                    <%end%>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Name: <%=a.name%></p>
+                    <p class="card-text">Age: <%=a.age%></p>
+                    <p class="card-text">Gender: <%=a.gender%></p>
+                    <p class="card-text">Breed: <%=a.breed%></p>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <%= link_to "View", pet_path(a), :class => "btn btn-sm btn-outline-secondary"%>
+                                <% if current_user.admin == true || @user.id == current_user.id %>
+                                  <%= link_to "Edit", edit_pet_path(a), :class => "btn btn-sm btn-outline-secondary"%>
+                                  <%= link_to "Delete", pet_path(a), method: :delete, :class => "btn btn-sm btn-outline-secondary"%>
+                                <% end %>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%end%>
+    </div>
+</div>

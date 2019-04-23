@@ -1,3 +1,114 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+/* Sections Header
+--------------------------------*/
+
+.section-header {
+  margin-bottom: 60px;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.section-header::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 5px;
+  background: #f82249;
+  bottom: 0;
+  left: calc(50% - 25px);
+}
+
+.section-header h2 {
+  font-size: 36px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #9195a2;
+}
+
+.section-with-bg {
+
+}
+
+/* Event List Sections
+--------------------------------*/
+#events {
+  padding: 60px 0 60px 0;
+}
+#schedule .event-pane {
+  transition: ease-in-out .2s;
+}
+#events .event-item {
+  border-bottom: 1px solid #cad4f6;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  transition: background-color ease-in-out 0.3s;
+}
+
+#event .event-item:hover {
+  background-color: #C0C0C0;
+}
+
+#events .event-item time {
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+#events .event-item .speaker {
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+  float: left;
+  margin: 0 10px 10px 0;
+}
+
+#events .event-item .speaker img {
+  height: 100%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  margin-left: 50%;
+  transition: all ease-in-out 0.3s;
+}
+
+#events .event-item h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+#events .event-item p span {
+  font-style: italic;
+  color: #008B8B;
+  font-weight: normal;
+  font-size: 14px;
+}
+#events .event-item span {
+  font-style: italic;
+  color: #DF252D;
+  font-weight: normal;
+  font-size: 16px;
+}
+#events .event-item p {
+  font-style: italic;
+  color: #152b79;
+  margin-bottom: 0;
+}
+
+#event .new_button{
+  display: flex;
+  justify-content:flex-end; 
+}

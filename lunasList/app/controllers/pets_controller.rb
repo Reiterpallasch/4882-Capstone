@@ -1,42 +1,48 @@
 class PetsController < ApplicationController
   def show
-        @pets = Pet.all
+        @pet = Pet.find(params[user_id])
   end
-  
+
   def new
-        # begin
-        #     @user = User.find(params[:user_id])
-        # rescue
-        #     redirect_to users_url, alert: 'user not found'
-        # end
+        begin
+            @user = User.find(params[:user_id])
+        rescue
+            redirect_to users_url, alert: 'User not found'
+        end
         @pet = Pet.new
   end
-  
+
   def create
-        @pet = Pet.new(params.require(:pet).permit(:species, :name, :age, :gender, :image))
- 
-        if @pet.save!
-            redirect_to pets_url, notice: 'pet added'
+      begin
+        @user = User.find(params[:user_id])
+      rescue
+        redirect_to users_url, alert: 'User not found'
+      end
+        @pet = Pet.new(params.require(:pet).permit(:breed, :name, :age, :gender, :photo))
+        @user.pets << @pet
+
+        if @user.save
+            redirect_to user_url(@pet.user), notice: 'Pet added'
         else
-            flash.now[:alert] = 'failed to add'
+            flash.now[:alert] = 'Failed to add'
             render :new
         end
   end
-  
+
   def edit
         @pet = Pet.find(params[:id])
   end
-  
+
     def update
         begin
             @pet = Pet.find(params[:id])
         rescue
-            redirect_to pets_url, alert: 'pet not found'
+            redirect_to users_url, alert: 'Pet not found'
         end
-        if @pet.update(params.require(:pet).permit(:type, :name, :age, :gender, :image))
-            redirect_to pets_url, notice: 'pet updated'
+        if @pet.update(params.require(:pet).permit(:breed, :name, :age, :gender, :photo))
+            redirect_to user_url(@pet.user), notice: 'Pet updated'
         else
-            flash.now[:alert] = 'update failed'
+            flash.now[:alert] = 'Update failed'
             render :edit
         end
     end
@@ -47,8 +53,9 @@ class PetsController < ApplicationController
         rescue
             redirect_to users_url, alert: 'Pet not found'
         end
+        @user = @pet.user
         @pet.destroy
-        redirect_to pets_url, notice: 'Pet deleted'
+        redirect_to user_url(@user), notice: 'Pet deleted'
     end
 
     def show
@@ -58,5 +65,5 @@ class PetsController < ApplicationController
           redirect_to pet_url(@pet), alert: "Error: pet not found"
         end
     end
-    
+
 end

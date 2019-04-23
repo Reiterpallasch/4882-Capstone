@@ -16,4 +16,18 @@
 #
 
 class Vet < ApplicationRecord
+  ratyrate_rateable "quality"
+  
+def self.search(searchcity)
+  if searchcity
+    if searchcity != ""
+        correct = searchcity.slice(0,1).capitalize + searchcity.slice(1..-1)
+        self.where(city: correct)
+    else
+        Vet.all
+    end
+  else
+    Vet.all
+  end
+end
 end

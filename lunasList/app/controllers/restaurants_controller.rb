@@ -1,11 +1,11 @@
 class RestaurantsController < ApplicationController
 
-  def index
-        @restaurants = Restaurant.all
+    def index
+        @restaurants = Restaurant.search(params[:search])
     end
 
      def show
-         @restaurants = Restaurant.find(params[:id])
+         @restaurant = Restaurant.find(params[:id])
      end
         
         
@@ -15,7 +15,7 @@ class RestaurantsController < ApplicationController
 
     def create
 
-        @restaurant = Restaurant.new(params.require(:restaurant).permit(:name, :address, :style))
+        @restaurant = Restaurant.new(params.require(:restaurant).permit(:name, :address, :city, :state, :style, :approved, :quality))
  
         if @restaurant.save!
             redirect_to restaurants_url, notice: 'restaurant added'
@@ -36,7 +36,7 @@ class RestaurantsController < ApplicationController
         rescue
             redirect_to restaurants_url, alert: 'restaurant not found'
         end
-        if @restaurant.update(params.require(:restaurant).permit(:name, :address, :style, :approved))
+        if @restaurant.update(params.require(:restaurant).permit(:name, :address, :city, :state, :style, :approved, :quality))
             redirect_to restaurants_url, notice: 'restaurant updated'
         else
             flash.now[:alert] = 'update failed'

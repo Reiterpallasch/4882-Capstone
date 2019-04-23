@@ -1,0 +1,23 @@
+
+
+
+<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBoj1FdGM5fcqBdj9MCTVFlEhm3FTcoUzY
+    &q=<%= @restaurant.address.downcase.tr!(" ", "+")%>,<%=@restaurant.city%>+<%=@restaurant.state%>" allowfullscreen>
+</iframe>
+
+<div class="row">
+  <div class="small-2 large-2 columns">
+    <%= rating_for @restaurant, @current_user%>
+  </div>
+<br>
+  <div class="small-2 large-2 columns">
+    <% if current_user %>
+      Quality: <%= rating_for @restaurant, "quality", disable_after_rate: true, imdb_average: true %>
+    <% end %>
+  </div>
+</div>
+<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>

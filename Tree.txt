@@ -1,0 +1,378 @@
+Folder PATH listing for volume Yuuka
+Volume serial number is 72FC-3725
+C:.
+|   README.md
+|   Tree.txt
+|   
++---lunasList
+|   |   .gitignore
+|   |   .ruby-version
+|   |   config.ru
+|   |   Gemfile
+|   |   Gemfile.lock
+|   |   package.json
+|   |   Rakefile
+|   |   README.md
+|   |   
+|   +---app
+|   |   +---assets
+|   |   |   +---config
+|   |   |   |       manifest.js
+|   |   |   |       
+|   |   |   +---images
+|   |   |   |       .keep
+|   |   |   |       defaultProfile.jpeg
+|   |   |   |       LunasList.jpg
+|   |   |   |       LunasList2.jpg
+|   |   |   |       LunasList2.png
+|   |   |   |       pawprint.jpg
+|   |   |   |       pawprint2.jpg
+|   |   |   |       
+|   |   |   +---javascripts
+|   |   |   |   |   application.js
+|   |   |   |   |   cable.js
+|   |   |   |   |   events.coffee
+|   |   |   |   |   forums.coffee
+|   |   |   |   |   parks.coffee
+|   |   |   |   |   posts.coffee
+|   |   |   |   |   restaurants.coffee
+|   |   |   |   |   stores.coffee
+|   |   |   |   |   topics.coffee
+|   |   |   |   |   users.coffee
+|   |   |   |   |   vets.coffee
+|   |   |   |   |   
+|   |   |   |   \---channels
+|   |   |   |           .keep
+|   |   |   |           
+|   |   |   \---stylesheets
+|   |   |           application.scss
+|   |   |           events.scss
+|   |   |           forums.scss
+|   |   |           parks.scss
+|   |   |           posts.scss
+|   |   |           restaurants.scss
+|   |   |           stores.scss
+|   |   |           topics.scss
+|   |   |           users.scss
+|   |   |           vets.scss
+|   |   |           
+|   |   +---channels
+|   |   |   \---application_cable
+|   |   |           channel.rb
+|   |   |           connection.rb
+|   |   |           
+|   |   +---controllers
+|   |   |   |   application_controller.rb
+|   |   |   |   events_controller.rb
+|   |   |   |   pages_controller.rb
+|   |   |   |   parks_controller.rb
+|   |   |   |   pets_controller.rb
+|   |   |   |   pictures_controller.rb
+|   |   |   |   restaurants_controller.rb
+|   |   |   |   stores_controller.rb
+|   |   |   |   users_controller.rb
+|   |   |   |   vets_controller.rb
+|   |   |   |   
+|   |   |   \---concerns
+|   |   |           .keep
+|   |   |           
+|   |   +---helpers
+|   |   |       application_helper.rb
+|   |   |       events_helper.rb
+|   |   |       forums_helper.rb
+|   |   |       parks_helper.rb
+|   |   |       posts_helper.rb
+|   |   |       restaurants_helper.rb
+|   |   |       stores_helper.rb
+|   |   |       topics_helper.rb
+|   |   |       users_helper.rb
+|   |   |       vets_helper.rb
+|   |   |       
+|   |   +---jobs
+|   |   |       application_job.rb
+|   |   |       
+|   |   +---mailers
+|   |   |       application_mailer.rb
+|   |   |       
+|   |   +---models
+|   |   |   |   application_record.rb
+|   |   |   |   avatar.rb
+|   |   |   |   event.rb
+|   |   |   |   forum.rb
+|   |   |   |   park.rb
+|   |   |   |   pet.rb
+|   |   |   |   picture.rb
+|   |   |   |   post.rb
+|   |   |   |   restaurant.rb
+|   |   |   |   store.rb
+|   |   |   |   topic.rb
+|   |   |   |   user.rb
+|   |   |   |   vet.rb
+|   |   |   |   
+|   |   |   \---concerns
+|   |   |           .keep
+|   |   |           
+|   |   \---views
+|   |       +---events
+|   |       |       edit.html.erb
+|   |       |       index.html.erb
+|   |       |       new.html.erb
+|   |       |       show.html.erb
+|   |       |       _form.html.erb
+|   |       |       
+|   |       +---layouts
+|   |       |       application.html.erb
+|   |       |       application.scss
+|   |       |       mailer.html.erb
+|   |       |       mailer.text.erb
+|   |       |       
+|   |       +---pages
+|   |       |       etiquettetips.html.erb
+|   |       |       feedingtips.html.erb
+|   |       |       home.html.erb
+|   |       |       
+|   |       +---parks
+|   |       |       edit.html.erb
+|   |       |       index.html.erb
+|   |       |       new.html.erb
+|   |       |       show.html.erb
+|   |       |       _form.html.erb
+|   |       |       
+|   |       +---pets
+|   |       |       edit.html.erb
+|   |       |       index.html.erb
+|   |       |       new.html.erb
+|   |       |       show.html.erb
+|   |       |       _form.html.erb
+|   |       |       
+|   |       +---pictures
+|   |       |       edit.html.erb
+|   |       |       index.html.erb
+|   |       |       new.html.erb
+|   |       |       show.html.erb
+|   |       |       _form.html.erb
+|   |       |       
+|   |       +---restaurants
+|   |       |       edit.html.erb
+|   |       |       index.html.erb
+|   |       |       new.html.erb
+|   |       |       show.html.erb
+|   |       |       _form.html.erb
+|   |       |       
+|   |       +---stores
+|   |       |       edit.html.erb
+|   |       |       index.html.erb
+|   |       |       new.html.erb
+|   |       |       show.html.erb
+|   |       |       _form.html.erb
+|   |       |       
+|   |       +---users
+|   |       |   |   edit.html.erb
+|   |       |   |   edit2.html.erb
+|   |       |   |   index.html.erb
+|   |       |   |   show.html.erb
+|   |       |   |   _form.html.erb
+|   |       |   |   
+|   |       |   +---confirmations
+|   |       |   |       new.html.erb
+|   |       |   |       
+|   |       |   +---mailer
+|   |       |   |       confirmation_instructions.html.erb
+|   |       |   |       email_changed.html.erb
+|   |       |   |       password_change.html.erb
+|   |       |   |       reset_password_instructions.html.erb
+|   |       |   |       unlock_instructions.html.erb
+|   |       |   |       
+|   |       |   +---passwords
+|   |       |   |       edit.html.erb
+|   |       |   |       new.html.erb
+|   |       |   |       
+|   |       |   +---registrations
+|   |       |   |       edit.html.erb
+|   |       |   |       new.html.erb
+|   |       |   |       
+|   |       |   +---sessions
+|   |       |   |       new.html.erb
+|   |       |   |       
+|   |       |   +---shared
+|   |       |   |       _error_messages.html.erb
+|   |       |   |       _links.html.erb
+|   |       |   |       
+|   |       |   \---unlocks
+|   |       |           new.html.erb
+|   |       |           
+|   |       \---vets
+|   |               edit.html.erb
+|   |               index.html.erb
+|   |               new.html.erb
+|   |               show.html.erb
+|   |               _form.html.erb
+|   |               
+|   +---bin
+|   |       bundle
+|   |       rails
+|   |       rake
+|   |       setup
+|   |       spring
+|   |       update
+|   |       yarn
+|   |       
+|   +---config
+|   |   |   application.rb
+|   |   |   boot.rb
+|   |   |   cable.yml
+|   |   |   credentials.yml.enc
+|   |   |   database.yml
+|   |   |   environment.rb
+|   |   |   puma.rb
+|   |   |   routes.rb
+|   |   |   spring.rb
+|   |   |   storage.yml
+|   |   |   
+|   |   +---environments
+|   |   |       development.rb
+|   |   |       production.rb
+|   |   |       test.rb
+|   |   |       
+|   |   +---initializers
+|   |   |       application_controller_renderer.rb
+|   |   |       assets.rb
+|   |   |       backtrace_silencers.rb
+|   |   |       content_security_policy.rb
+|   |   |       cookies_serializer.rb
+|   |   |       devise.rb
+|   |   |       filter_parameter_logging.rb
+|   |   |       inflections.rb
+|   |   |       mime_types.rb
+|   |   |       thredded.rb
+|   |   |       wrap_parameters.rb
+|   |   |       
+|   |   \---locales
+|   |           devise.en.yml
+|   |           en.yml
+|   |           
+|   +---db
+|   |   |   schema.rb
+|   |   |   seeds.rb
+|   |   |   
+|   |   \---migrate
+|   |           20190401174605_create_active_storage_tables.active_storage.rb
+|   |           20190417173843_add_trails_to_parks.rb
+|   |           20190417173902_add_gated_to_parks.rb
+|   |           20190417173934_add_waterbodies_to_parks.rb
+|   |           
+|   +---lib
+|   |   +---assets
+|   |   |       .keep
+|   |   |       
+|   |   \---tasks
+|   |           .keep
+|   |           auto_annotate_models.rake
+|   |           
+|   +---log
+|   |       .keep
+|   |       
+|   +---public
+|   |   |   404.html
+|   |   |   422.html
+|   |   |   500.html
+|   |   |   apple-touch-icon-precomposed.png
+|   |   |   apple-touch-icon.png
+|   |   |   favicon.ico
+|   |   |   robots.txt
+|   |   |   
+|   |   \---stylesheets
+|   |           application.css
+|   |           
+|   +---storage
+|   |       .keep
+|   |       
+|   +---test
+|   |   |   application_system_test_case.rb
+|   |   |   test_helper.rb
+|   |   |   
+|   |   +---controllers
+|   |   |       .keep
+|   |   |       events_controller_test.rb
+|   |   |       forums_controller_test.rb
+|   |   |       parks_controller_test.rb
+|   |   |       posts_controller_test.rb
+|   |   |       restaurants_controller_test.rb
+|   |   |       stores_controller_test.rb
+|   |   |       topics_controller_test.rb
+|   |   |       users_controller_test.rb
+|   |   |       vets_controller_test.rb
+|   |   |       
+|   |   +---fixtures
+|   |   |   |   .keep
+|   |   |   |   events.yml
+|   |   |   |   forums.yml
+|   |   |   |   parks.yml
+|   |   |   |   pets.yml
+|   |   |   |   pictures.yml
+|   |   |   |   posts.yml
+|   |   |   |   restaurants.yml
+|   |   |   |   stores.yml
+|   |   |   |   topics.yml
+|   |   |   |   users.yml
+|   |   |   |   vets.yml
+|   |   |   |   
+|   |   |   \---files
+|   |   |           .keep
+|   |   |           
+|   |   +---functional
+|   |   |       forums_controller_test.rb
+|   |   |       posts_controller_test.rb
+|   |   |       topics_controller_test.rb
+|   |   |       
+|   |   +---helpers
+|   |   |       .keep
+|   |   |       
+|   |   +---integration
+|   |   |       .keep
+|   |   |       
+|   |   +---mailers
+|   |   |       .keep
+|   |   |       
+|   |   +---models
+|   |   |       .keep
+|   |   |       event_test.rb
+|   |   |       forum_test.rb
+|   |   |       park_test.rb
+|   |   |       pet_test.rb
+|   |   |       picture_test.rb
+|   |   |       post_test.rb
+|   |   |       restaurant_test.rb
+|   |   |       store_test.rb
+|   |   |       topic_test.rb
+|   |   |       user_test.rb
+|   |   |       vet_test.rb
+|   |   |       
+|   |   \---system
+|   |           .keep
+|   |           
+|   +---tmp
+|   |       .keep
+|   |       
+|   \---vendor
+|           .keep
+|           
++---Ruby on Rails Setup Guide
+|       2019-02-19 13-00-59.flv
+|       2019-02-19 22-37-54.flv
+|       Linux terminal commands.txt
+|       Preconfigured VM Setup.txt
+|       Youtube Video Links.txt
+|       
++---Sprint Report Feedback
+|       JYU90_Sprint1- Wesley Jones- Mar 25, 2019 607 PM - Sprint 1 Team Report.docx
+|       JYU_30_Sprint0_LunarListWesleyTeamReport.docx
+|       
+\---Sprint Reports
+        class_diagram.png
+        Schema.png
+        Sprint 0 Team Report.docx
+        Sprint 1 Team Report.doc
+        Sprint 1 Team Report.docx
+        ~$rint 1 Team Report.doc
+        
