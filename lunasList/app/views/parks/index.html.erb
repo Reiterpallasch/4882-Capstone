@@ -16,102 +16,37 @@
 <p>
 	<%= form_tag parks_path, :method => 'get' do %>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :city => nil%>
+    <%= submit_tag "Search", :city => nil, class: 'btn btn-default'%>
 <% end %>
 </p></br>
 
-<% if user_signed_in? && current_user.admin == true%>
-    <table class="table table-sm">
-    <thead>
-        <tr>
-
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">City</th>
-        <th scope="col">State</th>
-		<th scope="col">Size</th>
-
-        <th scope="col">Leash</th>
-
-	<th scope="col">Approved</th>
-        <th scope="col"></th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <% @parks.each do |park| %>
-        <tr>
-
-        <td><%= park.name %></td>
-        <td><%= park.address %></td>
-        <td><%= park.city %></td>
-        <td><%= park.state %></td>
-        <td><%= park.size %></td>
-		<td><%= park.leash %></td>
-
-	<%if park.approved == true%>
-            <td>Approved</td>
-            <%else%>
-            <td>Not Approved</td>
+<% @parks.each do |park| %>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title"><%=link_to park.name, park_path(park), class: "card-link"%></h4>
+            <h6 class="card-subtitle mb-2 text-muted"><%=park.address%></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><%=park.city%>, <%=park.state%></h6>
+            <h6 class="card-text">Size: <%=park.size%></h6>
+            <h6 class="card-text">Leashes: <%=park.leash%></h6>
+            <% if user_signed_in? && current_user.admin == true %>
+                <%if park.approved == true%>
+                    <h6 class="card-text">Approved</h6>
+                <%else%>
+                    <h6 class="card-text">Not Approved</h6>
+                <%end%>
+                <%= link_to edit_park_path(park), class: 'btn btn-default' do %>
+                    <span class="fa fa-edit"></span>
+                <% end %>
+                <%= link_to park, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' do %>
+                    <span class="fa fa-trash-o"></span>
+                <% end %>
+            <%end%>
+        </div>
+    </div>
 <%end%>
-        
-        <td>
- 
-            <%= link_to 'Show', park_path(park) %>           
-            <%= link_to 'Edit', edit_park_path(park) %>
-            <%= link_to 'Destroy', park_path(park), method: :delete %> 
-            
-        </td> 
-        
-        </tr>
-
-        <% end %>
-
-
-    </tbody>
-    </table>
-    <p>
-        <%= link_to 'Create New park', new_park_path%>
-    </p>
-	<%else%>
-    <table class="table table-sm">
-    <thead>
-        <tr>
-
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">City</th>
-        <th scope="col">State</th>
-        <th scope="col">Size</th>
-        <th scope="col">Leash</th>
-        <th scope="col"></th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <% @parks.each do |park| %>
-        <tr>
-	<%if park.approved == true %>
-
-        <td><%= park.name %></td>
-        <td><%= park.address %></td>
-        <td><%= park.city %></td>
-        <td><%= park.state %></td>
-        <td><%= park.size %></td>
-        <td><%= park.leash %></td>
-        <td><%= link_to 'Show', park_path(park) %> </td>
-
-	<%end%>
-        
-        </tr>
-        <% end %>
-    </tbody>
-    </table>
 	
- 
+<p>
+    <%= link_to 'Create New park', new_park_path%>
+</p>
 
-    <p>
-        <%= link_to 'Create New park', new_park_path%>
-    </p>
-<%end%>
 </main><!-- /.container -->
