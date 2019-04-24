@@ -6,4 +6,6 @@ class PagesController < ApplicationController
     end
     def etiquettetips
     end
+    def caretips
+    end
 end
