@@ -1,7 +1,7 @@
 <main role="main" class="container">
 
 
-    <h1>Pet Friendly Parks</h1>
+    <h1>Parks</h1>
 	<p>
 	<iframe
   width="600"
@@ -27,7 +27,7 @@
             <h1 class="mb-10">Luna's List Certified Parks</h1>
             <% if user_signed_in? %>
                 <div class="actions">
-                    <%= link_to "Add Park", new_park_path, :class => 'btn btn-primary'%>
+                    <%= link_to "Apply for Certification", new_park_path, :class => 'btn btn-primary'%>
                 </div>
             <% end %>
         </div>

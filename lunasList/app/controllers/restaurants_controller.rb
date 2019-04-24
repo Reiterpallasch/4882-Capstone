@@ -15,7 +15,7 @@ class RestaurantsController < ApplicationController
 
     def create
 
-        @restaurant = Restaurant.new(params.require(:restaurant).permit(:name, :address, :city, :state, :style, :approved, :quality))
+        @restaurant = Restaurant.new(params.require(:restaurant).permit(:name, :address, :city, :state, :style, :approved, :quality, :additional))
  
         if @restaurant.save!
             redirect_to restaurants_url, notice: 'restaurant added'
@@ -36,7 +36,7 @@ class RestaurantsController < ApplicationController
         rescue
             redirect_to restaurants_url, alert: 'restaurant not found'
         end
-        if @restaurant.update(params.require(:restaurant).permit(:name, :address, :city, :state, :style, :approved, :quality))
+        if @restaurant.update(params.require(:restaurant).permit(:name, :address, :city, :state, :style, :approved, :quality, :additional))
             redirect_to restaurants_url, notice: 'restaurant updated'
         else
             flash.now[:alert] = 'update failed'

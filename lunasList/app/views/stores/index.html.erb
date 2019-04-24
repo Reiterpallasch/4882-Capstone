@@ -16,91 +16,53 @@
 <p>
 	<%= form_tag stores_path, :method => 'get' do %>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :city => nil%>
+    <%= submit_tag "Search", :city => nil, class: 'btn btn-default'%>
 <% end %>
 </p></br>
-<% if user_signed_in? && current_user.admin == true%>
-    <table class="table table-sm">
-    <thead>
-        <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">City</th>
-        <th scope="col">State</th>
-        <th scope="col">Phone</th>
-	<th scope="col">Approved</th>
-        <th scope="col"></th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <% @stores.each do |store| %>
-        <tr>
-        <td><%= store.storeName %></td>
-        <td><%= store.address %></td>
-        <td><%= store.city %></td>
-        <td><%= store.state %></td>
-        <td><%= store.phone %></td>
-	<%if store.approved == true%>
-            <td>Approved</td>
-            <%else%>
-            <td>Not Approved</td>
-<%end%>
-        
-        <td>
- 
-            <%= link_to 'Show', store_path(store) %>
-            <%= link_to 'Edit', edit_store_path(store) %>
-            <%= link_to 'Destroy', store_path(store), method: :delete %> 
-            
-        </td> 
-        
-        </tr>
-        <% end %>
-    </tbody>
-    </table>
-
-    <p>
-        <%= link_to 'Create New Store', new_store_path%>
-    </p>
-	<%else%>
-    <table class="table table-sm">
-    <thead>
-        <tr>
-
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">City</th>
-        <th scope="col">State</th>
-        <th scope="col">Phone</th>
-
-        <th scope="col"></th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <% @stores.each do |store| %>
-        <tr>
-	<%if store.approved == true %>
-
-        <td><%= store.storeName %></td>
-        <td><%= store.address %></td>
-        <td><%= store.city %></td>
-        <td><%= store.state %></td>
-        <td><%= store.phone %></td>
-
-        <%= link_to 'Show', store_path(store) %>
-	<%end%>
-        
-        </tr>
-        <% end %>
-    </tbody>
-    </table>
 	
- 
+ <div class="row d-flex justify-content-center">
+    <div class="menu-content  col-lg-7">
+        <div class="title text-center">
+            <br>
+            <h1 class="mb-10">Luna's List Certified Stores</h1>
+            <% if user_signed_in? %>
+                <div class="actions">
+                    <%= link_to "Apply for Certification", new_store_path, :class => 'btn btn-primary'%>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<div class='row'>
+    <% @stores.each do |store| %>
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <%if store.approved == true || (user_signed_in? && current_user.admin == true)%>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"><%=link_to store.storeName, store_path(store), class: "card-link"%></h4>
+                            <h6 class="card-subtitle mb-2 text-muted"><%=store.address%></h6>
+                            <h6 class="card-subtitle mb-2 text-muted"><%=store.city%>, <%=store.state%></h6>
+                            <h6 class="card-text">Phone Number: <%=store.phone%></h6>
+                            <% if user_signed_in? && current_user.admin == true %>
+                                <%if store.approved == true%>
+                                    <h6 class="card-text">Approved</h6>
+                                <%else%>
+                                    <h6 class="card-text">Not Approved</h6>
+                                <%end%>
+                                <%= link_to edit_store_path(store), class: 'btn btn-default' do %>
+                                    <span class="fa fa-edit"></span>
+                                <% end %>
+                                <%= link_to store, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' do %>
+                                    <span class="fa fa-trash-o"></span>
+                                <% end %>
+                            <%end%>
+                        </div>
+                    </div>
+                <%end%> 
+            </div>   
+        </div>
+    <%end%>
+</div> 	
 
-    <p>
-        <%= link_to 'Create New Store', new_store_path%>
-    </p>
-<%end%>
 </main><!-- /.container -->

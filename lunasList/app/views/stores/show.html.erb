@@ -1,3 +1,4 @@
+<main role="main" class="container">
 <iframe
   width="600"
   height="450"
@@ -6,7 +7,26 @@
     &q=<%= @store.address.downcase.tr!(" ", "+")%>,<%=@store.city%>+<%=@store.state%>" allowfullscreen>
 </iframe>
 
-<div class="row">
+  <h1><%=@store.storeName%></h1>
+  <p><%=@store.address%><br>
+  <%=@store.city%>,<%=@store.state%><br>
+  Phone Number: <%=@store.phone%><br>
+  <%if user_signed_in? && current_user.admin == true%>
+      <%if @store.approved == true%>
+          <p>Approved</p>
+      <%else%>
+          <p>Not Approved</p>
+      <%end%>
+      <%= link_to edit_store_path(@store), class: 'btn btn-default' do %>
+          <span class="fa fa-edit"></span>
+      <% end %>
+      <%= link_to @store, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' do %>
+          <span class="fa fa-trash-o"></span>
+      <% end %>
+  <%end%>
+  </p>
+
+
   <div class="small-2 large-2 columns">
     <%= rating_for @store, @current_user%>
   </div>
@@ -16,5 +36,6 @@
       Quality: <%= rating_for @store, "quality", disable_after_rate: true, imdb_average: true %>
     <% end %>
   </div>
-</div>
+
  <%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>
+</main>

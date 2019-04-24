@@ -3,7 +3,7 @@
   
     <div class="field">
         <%= form.label :name, 'Park Name'%>
-        <%= form.text_field :name, class: 'form-control' %>
+        <%= form.text_field :name, class: 'form-control', :required => true %>
         <% if park.errors.full_messages_for(:name).any?%>
             <div class="invalid-feedback">
                 <% park.errors.full_messages_for(:name).each do |error_message|%>
@@ -18,7 +18,7 @@
         <div class="col-md-4 mb-3">
             <div class="field">
                 <%= form.label :address%>
-                <%= form.text_field :address, class: 'form-control' %>
+                <%= form.text_field :address, class: 'form-control', :required => true %>
                 <% if park.errors.full_messages_for(:address).any?%>
                     <div class="invalid-feedback">
                         <% park.errors.full_messages_for(:address).each do |error_message|%>
@@ -31,7 +31,7 @@
         <div class="col-md-4 mb-3">
             <div class="field">
                 <%= form.label :city%>
-                <%= form.text_field :city, class: 'form-control' %>
+                <%= form.text_field :city, class: 'form-control', :required => true %>
                 <% if park.errors.full_messages_for(:city).any?%>
                     <div class="invalid-feedback">
                         <% park.errors.full_messages_for(:city).each do |error_message|%>
@@ -43,58 +43,57 @@
         </div>
         <div class="field">
             <%= form.label :state%>
-            
              <%= form.select :state, options_for_select([['AK', 'AK'],
-    ['AL', 'AL'],
-    ['AR', 'AR'],
-    ['AZ', 'AZ'],
-    ['CA', 'CA'],
-    ['CO', 'CO'],
-    ['CT', 'CT'],
-    ['DC', 'DC'],
-    ['DE', 'DE'],
-    ['FL', 'FL'],
-    ['GA', 'GA'],
-    ['HI', 'HI'],
-    ['IA', 'IA'],
-    ['ID', 'ID'],
-    ['IL', 'IL'],
-    ['IN', 'IN'],
-    ['KS', 'KS'],
-    ['KY', 'KY'],
-    ['LA', 'LA'],
-    ['MA', 'MA'],
-    ['MD', 'MD'],
-    ['ME', 'ME'],
-    ['MI', 'MI'],
-    ['MN', 'MN'],
-    ['MO', 'MO'],
-    ['MS', 'MS'],
-    ['MT', 'MT'],
-    ['NC', 'NC'],
-    ['ND', 'ND'],
-    ['NE', 'NE'],
-    ['NH', 'NH'],
-    ['NJ', 'NJ'],
-    ['NM', 'NM'],
-    ['NV', 'NV'],
-    ['NY', 'NY'],
-    ['OH', 'OH'],
-    ['OK', 'OK'],
-    ['OR', 'OR'],
-    ['PA', 'PA'],
-    ['RI', 'RI'],
-    ['SC', 'SC'],
-    ['SD', 'SD'],
-    ['TN', 'TN'],
-    ['TX', 'TX'],
-    ['UT', 'UT'],
-    ['VA', 'VA'],
-    ['VT', 'VT'],
-    ['WA', 'WA'],
-    ['WI', 'WI'],
-    ['WV', 'WV'],
-    ['WY', 'WY']], :prompt => 'Select'),class: 'custom-select', :required => true%>
+            ['AL', 'AL'],
+            ['AR', 'AR'],
+            ['AZ', 'AZ'],
+            ['CA', 'CA'],
+            ['CO', 'CO'],
+            ['CT', 'CT'],
+            ['DC', 'DC'],
+            ['DE', 'DE'],
+            ['FL', 'FL'],
+            ['GA', 'GA'],
+            ['HI', 'HI'],
+            ['IA', 'IA'],
+            ['ID', 'ID'],
+            ['IL', 'IL'],
+            ['IN', 'IN'],
+            ['KS', 'KS'],
+            ['KY', 'KY'],
+            ['LA', 'LA'],
+            ['MA', 'MA'],
+            ['MD', 'MD'],
+            ['ME', 'ME'],
+            ['MI', 'MI'],
+            ['MN', 'MN'],
+            ['MO', 'MO'],
+            ['MS', 'MS'],
+            ['MT', 'MT'],
+            ['NC', 'NC'],
+            ['ND', 'ND'],
+            ['NE', 'NE'],
+            ['NH', 'NH'],
+            ['NJ', 'NJ'],
+            ['NM', 'NM'],
+            ['NV', 'NV'],
+            ['NY', 'NY'],
+            ['OH', 'OH'],
+            ['OK', 'OK'],
+            ['OR', 'OR'],
+            ['PA', 'PA'],
+            ['RI', 'RI'],
+            ['SC', 'SC'],
+            ['SD', 'SD'],
+            ['TN', 'TN'],
+            ['TX', 'TX'],
+            ['UT', 'UT'],
+            ['VA', 'VA'],
+            ['VT', 'VT'],
+            ['WA', 'WA'],
+            ['WI', 'WI'],
+            ['WV', 'WV'],
+            ['WY', 'WY']], :prompt => 'Select'),class: 'custom-select', :required => true%>
             <% if park.errors.full_messages_for(:state).any?%>
                 <div class="invalid-feedback">
                     <% park.errors.full_messages_for(:state).each do |error_message|%>
