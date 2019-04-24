@@ -1,22 +1,43 @@
-
-<iframe
-  width="600"
-  height="450"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBoj1FdGM5fcqBdj9MCTVFlEhm3FTcoUzY
-    &q=<%= @park.address.downcase.tr!(" ", "+")%>,<%=@park.city%>+<%=@park.state%>" allowfullscreen>
-</iframe>
-
-<div class="row">
+<main role="main" class="container">
+      <iframe
+        width="600"
+        height="450"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBoj1FdGM5fcqBdj9MCTVFlEhm3FTcoUzY
+          &q=<%= @park.address.downcase.tr!(" ", "+")%>,<%=@park.city%>+<%=@park.state%>" allowfullscreen>
+      </iframe>
+    
+      <h1><%=@park.name%></h1>
+      <p><%=@park.address%><br>
+      <%=@park.city%>,<%=@park.state%><br>
+      Leashes: <%=@park.leash%><br>
+      Size: <%=@park.size%><br>
+      <%if user_signed_in? && current_user.admin == true%>
+         <%if @park.approved == true%>
+              <p>Approved</p>
+          <%else%>
+              <p>Not Approved</p>
+          <%end%>
+          <%= link_to edit_park_path(@park), class: 'btn btn-default' do %>
+              <span class="fa fa-edit"></span>
+          <% end %>
+          <%= link_to @park, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' do %>
+              <span class="fa fa-trash-o"></span>
+          <% end %>
+      <%end%>
+      </p>
+  
+  
   <div class="small-2 large-2 columns">
     <%= rating_for @park, @current_user%>
   </div>
-<br>
+
+  <br>
   <div class="small-2 large-2 columns">
-    <% if current_user %>
-      Quality: <%= rating_for @park, "quality", disable_after_rate: true, imdb_average: true %>
+    <% if user_signed_in? %>
+      <p>Quality: <%= rating_for @park, "quality", disable_after_rate: true, imdb_average: true %></p>
     <% end %>
   </div>
-</div>
- <%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>
+  <%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>
+</main>
 

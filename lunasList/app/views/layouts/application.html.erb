@@ -40,17 +40,21 @@
                <li class="nav-item">
                 <%= link_to 'Forums', forum_path, class: 'nav-link' %>
               </li>
-              <li class="nav-item">
-               <%= link_to 'Members', main_app.users_path, class: 'nav-link' %>
-              </li>
               <% if user_signed_in? %>
-                <li class ="nav-item"> <%= link_to "Profile", main_app.user_path(current_user), class: 'nav-link' %> </li>
-                <li class ="nav-item"> <%= link_to "Logout", main_app.destroy_user_session_path, method: :delete, class: 'nav-link' %> </li>
-              <% else %>
-                <li class ="nav-item"><%= link_to "Registration", main_app.new_user_registration_path, class: 'nav-link' %></li>
-                <li class ="nav-item"><%= link_to "Login", main_app.new_user_session_path, class: 'nav-link' %></li>
-              <% end %>
+                <li class="nav-item">
+                  <%= link_to 'Members', main_app.users_path, class: 'nav-link' %>
+                </li>
+              <%end%>
+              
+              
             </ul>
+            <% if user_signed_in? %>
+              <span class="navbar-text" style="margin-right: 1rem"><%=link_to current_user.email, main_app.user_path(current_user)%>
+              <%= link_to "Logout", main_app.destroy_user_session_path, method: :delete, class: 'btn btn-outline-primary' %>
+            <% else %>
+              <span class="navbar-item" style="margin-right: 1rem"><%=link_to 'Login', main_app.new_user_session_path, class: 'btn btn-outline-primary'%>
+              <%= link_to "Sign Up", main_app.new_user_registration_path, class: 'btn btn-outline-success' %>
+            <% end %>
           </div>
       </nav>
 
@@ -70,3 +74,5 @@
     
   </body>
 </html>
+
+

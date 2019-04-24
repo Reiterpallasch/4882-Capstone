@@ -1,4 +1,4 @@
-
+<main role='main' class='container'>
 
 
 <iframe
@@ -9,7 +9,29 @@
     &q=<%= @restaurant.address.downcase.tr!(" ", "+")%>,<%=@restaurant.city%>+<%=@restaurant.state%>" allowfullscreen>
 </iframe>
 
-<div class="row">
+<h1><%=@restaurant.name%></h1>
+<p><%=@restaurant.address%><br>
+<%=@restaurant.city%>,<%=@restaurant.state%><br>
+Type: <%=@restaurant.style%><br>
+<%if @restaurant.additional.length > 0%>
+  Additional Information: <%=@restaurant.additional%><br>
+<%end%>
+<%if user_signed_in? && current_user.admin == true%>
+    <%if @restaurant.approved == true%>
+        <p>Approved</p>
+    <%else%>
+        <p>Not Approved</p>
+    <%end%>
+    <%= link_to edit_restaurant_path(@restaurant), class: 'btn btn-default' do %>
+        <span class="fa fa-edit"></span>
+    <% end %>
+    <%= link_to @restaurant, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' do %>
+        <span class="fa fa-trash-o"></span>
+    <% end %>
+<%end%>
+</p>
+
+
   <div class="small-2 large-2 columns">
     <%= rating_for @restaurant, @current_user%>
   </div>
@@ -19,5 +41,6 @@
       Quality: <%= rating_for @restaurant, "quality", disable_after_rate: true, imdb_average: true %>
     <% end %>
   </div>
-</div>
+
 <%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>
+</main>
