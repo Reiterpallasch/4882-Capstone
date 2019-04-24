@@ -1,20 +1,8 @@
 <%= form_with model: vet, local: true do |form| %>
 
-    <div class="field">
+<div class="field">
         <%= form.label :businessName, 'Business Name'%>
-        <%= form.text_field :businessName, class: 'form-control' %>
-        <% if vet.errors.full_messages_for(:businessName).any?%>
-            <div class="invalid-feedback">
-                <% vet.errors.full_messages_for(:businessName).each do |error_message|%>
-                    <%= error_message %>.
-                <% end %>
-            </div>
-        <% end %>
-    </div>
-
-    <div class="field">
-        <%= form.label :name%>
-        <%= form.text_field :name, class: 'form-control' %>
+        <%= form.text_field :businessName, class: 'form-control', :required => true %>
         <% if vet.errors.full_messages_for(:name).any?%>
             <div class="invalid-feedback">
                 <% vet.errors.full_messages_for(:name).each do |error_message|%>
@@ -23,66 +11,127 @@
             </div>
         <% end %>
     </div>
-
-    <div class="field">
-        <%= form.label :address%>
-        <%= form.text_field :address, class: 'form-control' %>
-        <% if vet.errors.full_messages_for(:address).any?%>
-            <div class="invalid-feedback">
-                <% vet.errors.full_messages_for(:address).each do |error_message|%>
-                    <%= error_message %>.
+    
+    
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <div class="field">
+                <%= form.label :address%>
+                <%= form.text_field :address, class: 'form-control', :required => true %>
+                <% if vet.errors.full_messages_for(:address).any?%>
+                    <div class="invalid-feedback">
+                        <% vet.errors.full_messages_for(:address).each do |error_message|%>
+                            <%= error_message %>.
+                        <% end %>
+                    </div>
                 <% end %>
             </div>
-        <% end %>
-    </div>
-
-    <div class="field">
-        <%= form.label :city%>
-        <%= form.text_field :city, class: 'form-control' %>
-        <% if vet.errors.full_messages_for(:city).any?%>
-            <div class="invalid-feedback">
-                <% vet.errors.full_messages_for(:city).each do |error_message|%>
-                    <%= error_message %>.
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="field">
+                <%= form.label :city%>
+                <%= form.text_field :city, class: 'form-control', :required => true %>
+                <% if vet.errors.full_messages_for(:city).any?%>
+                    <div class="invalid-feedback">
+                        <% vet.errors.full_messages_for(:city).each do |error_message|%>
+                            <%= error_message %>.
+                        <% end %>
+                    </div>
                 <% end %>
             </div>
-        <% end %>
+        </div>
+        <div class="field">
+            <%= form.label :state%>
+             <%= form.select :state, options_for_select([['AK', 'AK'],
+            ['AL', 'AL'],
+            ['AR', 'AR'],
+            ['AZ', 'AZ'],
+            ['CA', 'CA'],
+            ['CO', 'CO'],
+            ['CT', 'CT'],
+            ['DC', 'DC'],
+            ['DE', 'DE'],
+            ['FL', 'FL'],
+            ['GA', 'GA'],
+            ['HI', 'HI'],
+            ['IA', 'IA'],
+            ['ID', 'ID'],
+            ['IL', 'IL'],
+            ['IN', 'IN'],
+            ['KS', 'KS'],
+            ['KY', 'KY'],
+            ['LA', 'LA'],
+            ['MA', 'MA'],
+            ['MD', 'MD'],
+            ['ME', 'ME'],
+            ['MI', 'MI'],
+            ['MN', 'MN'],
+            ['MO', 'MO'],
+            ['MS', 'MS'],
+            ['MT', 'MT'],
+            ['NC', 'NC'],
+            ['ND', 'ND'],
+            ['NE', 'NE'],
+            ['NH', 'NH'],
+            ['NJ', 'NJ'],
+            ['NM', 'NM'],
+            ['NV', 'NV'],
+            ['NY', 'NY'],
+            ['OH', 'OH'],
+            ['OK', 'OK'],
+            ['OR', 'OR'],
+            ['PA', 'PA'],
+            ['RI', 'RI'],
+            ['SC', 'SC'],
+            ['SD', 'SD'],
+            ['TN', 'TN'],
+            ['TX', 'TX'],
+            ['UT', 'UT'],
+            ['VA', 'VA'],
+            ['VT', 'VT'],
+            ['WA', 'WA'],
+            ['WI', 'WI'],
+            ['WV', 'WV'],
+            ['WY', 'WY']], :prompt => 'Select'),class: 'custom-select', :required => true%>
+            <% if vet.errors.full_messages_for(:state).any?%>
+                <div class="invalid-feedback">
+                    <% vet.errors.full_messages_for(:state).each do |error_message|%>
+                        <%= error_message %>.
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
     </div>
-
-    <div class="field">
-        <%= form.label :state%>
-        <%= form.text_field :state, class: 'form-control' %>
-        <% if vet.errors.full_messages_for(:state).any?%>
-            <div class="invalid-feedback">
-                <% vet.errors.full_messages_for(:state).each do |error_message|%>
-                    <%= error_message %>.
+    <div class='form-row'>
+        <div class="col-md-4 mb-3">
+            <div class="field">
+                <%= form.label :name, 'Primary Physician\'s Name'%>
+                <%= form.text_field :name, class: 'form-control', :required => true %>
+                <% if vet.errors.full_messages_for(:name).any?%>
+                    <div class="invalid-feedback">
+                        <% vet.errors.full_messages_for(:name).each do |error_message|%>
+                            <%= error_message %>.
+                        <% end %>
+                    </div>
                 <% end %>
             </div>
-        <% end %>
-    </div>
+        </div>
 
-    <div class="field">
-        <%= form.label :phone%>
-        <%= form.text_field :phone, class: 'form-control' %>
-        <% if vet.errors.full_messages_for(:phone).any?%>
-            <div class="invalid-feedback">
-                <% vet.errors.full_messages_for(:phone).each do |error_message|%>
-                    <%= error_message %>.
+        <div class="col-md-4 mb-3">
+            <div class="field">
+                <%= form.label :phone, 'Phone Number'%>
+                <%= form.text_field :phone, class: 'form-control', :required => true %>
+                <% if vet.errors.full_messages_for(:phone).any?%>
+                    <div class="invalid-feedback">
+                        <% vet.errors.full_messages_for(:phone).each do |error_message|%>
+                            <%= error_message %>.
+                        <% end %>
+                    </div>
                 <% end %>
             </div>
-        <% end %>
+        </div>
     </div>
 
-    <div class="field">
-        <%= form.label :email%>
-        <%= form.text_field :email, class: 'form-control' %>
-        <% if vet.errors.full_messages_for(:email).any?%>
-            <div class="invalid-feedback">
-                <% vet.errors.full_messages_for(:email).each do |error_message|%>
-                    <%= error_message %>.
-                <% end %>
-            </div>
-        <% end %>
-    </div>
 <%if user_signed_in? %>
 <% if current_user.admin == true %>
     <div class="field">

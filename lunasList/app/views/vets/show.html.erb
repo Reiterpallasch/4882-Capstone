@@ -1,5 +1,4 @@
-
-
+<main role='main' class='container'>
 
 <iframe
   width="600"
@@ -9,7 +8,26 @@
     &q=<%= @vet.address.downcase.tr!(" ", "+")%>,<%=@vet.city%>+<%=@vet.state%>" allowfullscreen>
 </iframe>
 
-<div class="row">
+<h1><%=@vet.businessName%></h1>
+<p><%=@vet.address%><br>
+<%=@vet.city%>,<%=@vet.state%><br>
+Primary Physician's Name: <%=@vet.name%><br>
+Phone Number: <%=@vet.phone%><br>
+<%if user_signed_in? && current_user.admin == true%>
+    <%if @vet.approved == true%>
+        <p>Approved</p>
+    <%else%>
+        <p>Not Approved</p>
+    <%end%>
+    <%= link_to edit_vet_path(@vet), class: 'btn btn-default' do %>
+        <span class="fa fa-edit"></span>
+    <% end %>
+    <%= link_to @vet, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' do %>
+        <span class="fa fa-trash-o"></span>
+    <% end %>
+<%end%>
+</p>
+
   <div class="small-2 large-2 columns">
     <%= rating_for @vet, @current_user%>
   </div>
@@ -19,5 +37,7 @@
       Quality: <%= rating_for @vet, "quality", disable_after_rate: true, imdb_average: true %>
     <% end %>
   </div>
-</div>
+
  <%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>
+
+</main>
