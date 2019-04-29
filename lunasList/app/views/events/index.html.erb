@@ -9,6 +9,7 @@
       <div class="container">
       <div class="content row justify-content-center">
         <!-- event list -->
+        <% @events = @events.order(time: :asc)%>
         <% @events.each do |each| %>
         <% if each.approved == true %>
 
