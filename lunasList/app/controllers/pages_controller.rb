@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
     def home
-	@events = Event.order('time DESC').limit(3)
+	@events = Event.order(time: :asc).limit(3)
     end
     def feedingtips
     end
