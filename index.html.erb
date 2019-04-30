@@ -1,0 +1,68 @@
+<body>
+<main>
+  <section id="events" class="section-with-bg">
+    <div class="container wow fadeInUp">
+      <div class="section-header">
+        <h2>Our Next Events</h2>
+        <p>Welcome you to join us for our events</p>
+      </div>
+</div>
+     </div>
+ 
+        <!-- event list -->
+        <% @events.each do |each| %>
+        <% if each.approved == true %>
+
+          <div class="row event-item">
+            <div class="col-md-2">
+              <p>
+              <time><%= each.time.strftime("%b")%></time>
+              <time><%= each.time.day %>,</time>
+              <time><%= each.time.year %></time>
+              </p>
+              <p><%= each.time.strftime("%I:%M %P")%></p>
+            </div>
+            <div class="col-md-9">
+              <h4><%= each.title %></h4>
+              <p><%= each.description %></p>
+              <p><span class="fa fa-map-marker"> <%= each.location %></span></p>
+            </div>
+            <div class="col-md-1">
+              <br>
+
+              <% if user_signed_in? && current_user.admin == true %>
+              <td>
+                <%= link_to edit_event_path(each), class: 'btn btn-default' do %>
+                  <span class="fa fa-edit"></span>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to each, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' do %>
+                  <span class="fa fa-trash-o"></span>
+                <% end %>
+              </td>
+              <% end %>
+            </div>
+</div>
+          </div>
+          <% end %>
+          <% end %>
+
+        <!-- End Schdule Day 1 -->
+
+      </div>
+      </div>
+
+    </div>
+    <br>
+    <div class="new_button">
+        <%= link_to 'New Event', new_event_path, :class => 'btn btn-success'%>
+        <% if user_signed_in? && current_user.admin == true %>
+          <%= link_to 'Pending Events', events_pending_path, :class => 'btn btn-success'%>
+        <% end %>
+    </div>
+
+
+  </section>
+</main>
+</body><!-- /.container -->
