@@ -89,7 +89,7 @@
             ['WA', 'WA'],
             ['WI', 'WI'],
             ['WV', 'WV'],
-            ['WY', 'WY']]), {:prompt => 'State'},{class: 'custom-select', :required => true})%>
+            ['WY', 'WY']],selected: @park.state), {:prompt => 'State'},{class: 'custom-select', :required => true})%>
             <% if park.errors.full_messages_for(:state).any?%>
                 <div class="invalid-feedback">
                     <% park.errors.full_messages_for(:state).each do |error_message|%>
