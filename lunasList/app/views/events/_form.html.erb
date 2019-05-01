@@ -95,14 +95,7 @@
         </div>
     </div>
     <div class="field">
-        <%= form.text_area :description, class: 'form-control', placeholder: 'Description (Optional)' %>
-        <% if event.errors.full_messages_for(:description).any?%>
-            <div class="invalid-feedback">
-                <% event.errors.full_messages_for(:description).each do |error_message|%>
-                    <%= error_message %>.
-                <% end %>
-            </div>
-        <% end %>
+        <%= form.text_area :description, class: 'form-control', placeholder: 'Description', :required => true %> 
     </div>
 
     <div class="form-row">     

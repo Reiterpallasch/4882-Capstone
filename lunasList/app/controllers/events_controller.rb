@@ -23,6 +23,9 @@ class EventsController < ApplicationController
 
     @event = Event.new(params.require(:event).permit(:title, :description, :location, :city, :state, :time, :approved))
 
+    if user_signed_in? == false || current_user.admin != true
+      @event.approved = false
+    end
     if @event.save
       redirect_to events_url, notice: 'Event was successfully created'
     else
