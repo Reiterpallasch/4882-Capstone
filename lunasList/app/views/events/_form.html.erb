@@ -1,122 +1,116 @@
 <%= form_with model: event, local: true do |form| %>
 
-<div class="field">
-    <%= form.label :title%>
-    <%= form.text_field :title, class: 'form-control' %>
-    <% if event.errors.full_messages_for(:title).any?%>
-        <div class="invalid-feedback">
-            <% event.errors.full_messages_for(:title).each do |error_message|%>
-                <%= error_message %>.
-            <% end %>
-        </div>
-    <% end %>
-</div>
+    
     <div class="field">
-        <%= form.label :location%>
-        <%= form.text_field :location, class: 'form-control' %>
-        <% if event.errors.full_messages_for(:location).any?%>
+        <%= form.text_field :title, class: 'form-control', placeholder: 'Title', :required => true %>
+        <% if event.errors.full_messages_for(:title).any?%>
             <div class="invalid-feedback">
-                <% event.errors.full_messages_for(:location).each do |error_message|%>
+                <% event.errors.full_messages_for(:title).each do |error_message|%>
                     <%= error_message %>.
                 <% end %>
             </div>
         <% end %>
     </div>
-
-    <div class="field">
-        <%= form.label :city%>
-        <%= form.text_field :city, class: 'form-control' %>
-        <% if event.errors.full_messages_for(:city).any?%>
-            <div class="invalid-feedback">
-                <% event.errors.full_messages_for(:city).each do |error_message|%>
-                    <%= error_message %>.
-                <% end %>
-            </div>
-        <% end %>
-    </div>
-
-    <div class="field">
-            <%= form.label :state%>
-            <%= form.select(:state, options_for_select([['AK', 'AK'],
-            ['AL', 'AL'],
-            ['AR', 'AR'],
-            ['AZ', 'AZ'],
-            ['CA', 'CA'],
-            ['CO', 'CO'],
-            ['CT', 'CT'],
-            ['DC', 'DC'],
-            ['DE', 'DE'],
-            ['FL', 'FL'],
-            ['GA', 'GA'],
-            ['HI', 'HI'],
-            ['IA', 'IA'],
-            ['ID', 'ID'],
-            ['IL', 'IL'],
-            ['IN', 'IN'],
-            ['KS', 'KS'],
-            ['KY', 'KY'],
-            ['LA', 'LA'],
-            ['MA', 'MA'],
-            ['MD', 'MD'],
-            ['ME', 'ME'],
-            ['MI', 'MI'],
-            ['MN', 'MN'],
-            ['MO', 'MO'],
-            ['MS', 'MS'],
-            ['MT', 'MT'],
-            ['NC', 'NC'],
-            ['ND', 'ND'],
-            ['NE', 'NE'],
-            ['NH', 'NH'],
-            ['NJ', 'NJ'],
-            ['NM', 'NM'],
-            ['NV', 'NV'],
-            ['NY', 'NY'],
-            ['OH', 'OH'],
-            ['OK', 'OK'],
-            ['OR', 'OR'],
-            ['PA', 'PA'],
-            ['RI', 'RI'],
-            ['SC', 'SC'],
-            ['SD', 'SD'],
-            ['TN', 'TN'],
-            ['TX', 'TX'],
-            ['UT', 'UT'],
-            ['VA', 'VA'],
-            ['VT', 'VT'],
-            ['WA', 'WA'],
-            ['WI', 'WI'],
-            ['WV', 'WV'],
-            ['WY', 'WY']]), {:prompt => 'Select'},{class: 'custom-select', :required => true})%>
-    </div>
-
-    <div class="field">
-        <%= form.label :description%>
-        <%= form.text_area :description, class: 'form-control' %>
-        <% if event.errors.full_messages_for(:description).any?%>
-            <div class="invalid-feedback">
-                <% event.errors.full_messages_for(:description).each do |error_message|%>
-                    <%= error_message %>.
-                <% end %>
-            </div>
-        <% end %>
-    </div>
-
     <div class="form-row">
-            <div class="col-md-4 mb-3">
-                <div class="field">
-                    <%= form.label :time, "Session starts at" %>
-                    <br>
-                    <%= form.datetime_select(:time, :start_year => 2019, :ampm => true, :default => 0.days.from_now.in_time_zone(@timezone))%>
-                </div>
+        <div class="col-md-4 mb-3">
+            <div class="field">
+                <%= form.text_field :location, class: 'form-control', placeholder: 'Location', :required => true %>
+                <% if event.errors.full_messages_for(:location).any?%>
+                    <div class="invalid-feedback">
+                        <% event.errors.full_messages_for(:location).each do |error_message|%>
+                            <%= error_message %>.
+                        <% end %>
+                    </div>
+                <% end %>
             </div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+            <div class="field">
+                <%= form.text_field :city, class: 'form-control', placeholder: 'City', :required => true %>
+                <% if event.errors.full_messages_for(:city).any?%>
+                    <div class="invalid-feedback">
+                        <% event.errors.full_messages_for(:city).each do |error_message|%>
+                            <%= error_message %>.
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
 
+        <div class="col-md-4 mb-3">
+            <div class="field">
+                    <%= form.select(:state, options_for_select([['AK', 'AK'],
+                    ['AL', 'AL'],
+                    ['AR', 'AR'],
+                    ['AZ', 'AZ'],
+                    ['CA', 'CA'],
+                    ['CO', 'CO'],
+                    ['CT', 'CT'],
+                    ['DC', 'DC'],
+                    ['DE', 'DE'],
+                    ['FL', 'FL'],
+                    ['GA', 'GA'],
+                    ['HI', 'HI'],
+                    ['IA', 'IA'],
+                    ['ID', 'ID'],
+                    ['IL', 'IL'],
+                    ['IN', 'IN'],
+                    ['KS', 'KS'],
+                    ['KY', 'KY'],
+                    ['LA', 'LA'],
+                    ['MA', 'MA'],
+                    ['MD', 'MD'],
+                    ['ME', 'ME'],
+                    ['MI', 'MI'],
+                    ['MN', 'MN'],
+                    ['MO', 'MO'],
+                    ['MS', 'MS'],
+                    ['MT', 'MT'],
+                    ['NC', 'NC'],
+                    ['ND', 'ND'],
+                    ['NE', 'NE'],
+                    ['NH', 'NH'],
+                    ['NJ', 'NJ'],
+                    ['NM', 'NM'],
+                    ['NV', 'NV'],
+                    ['NY', 'NY'],
+                    ['OH', 'OH'],
+                    ['OK', 'OK'],
+                    ['OR', 'OR'],
+                    ['PA', 'PA'],
+                    ['RI', 'RI'],
+                    ['SC', 'SC'],
+                    ['SD', 'SD'],
+                    ['TN', 'TN'],
+                    ['TX', 'TX'],
+                    ['UT', 'UT'],
+                    ['VA', 'VA'],
+                    ['VT', 'VT'],
+                    ['WA', 'WA'],
+                    ['WI', 'WI'],
+                    ['WV', 'WV'],
+                    ['WY', 'WY']]), {:prompt => 'State'},{class: 'custom-select', :required => true})%>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <%= form.text_area :description, class: 'form-control', placeholder: 'Description', :required => true %> 
+    </div>
+
+    <div class="form-row">     
+        <div class="field">
+            <%= form.label :time, "Event starts at" %>
+            
+            <%= form.datetime_select(:time, :start_year => 2019, :ampm => true, :default => 0.days.from_now.in_time_zone(@timezone))%>
+        </div>
     </div>
 <%if user_signed_in? %>
     <% if current_user.admin == true %>
-        <div class="field">
-            <%= form.label :approved %>
-            <%= form.select(:approved, options_for_select(["false","true"]), {selected: @event.approved},{class: 'custom-select'}) %>
+        <div class="form-row">
+            <div class="field">
+                Approved? <%= form.select(:approved, options_for_select(["false","true"]), {selected: @event.approved},{class: 'custom-select'}) %>
+            </div>
         </div>
     <% end %>
 <%end%>

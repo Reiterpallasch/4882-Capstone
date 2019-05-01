@@ -1,13 +1,11 @@
 <body>
-<main>
+<main role='main' class='container'>
   <section id="events" class="section-with-bg">
     <div class="container wow fadeInUp">
       <div class="section-header">
         <h2>Pending Events</h2>
         <p>Click edit icon to approve an event.</p>
       </div>
-      <div class="container"
-      <div class="content row justify-content-center">
         <!-- event list -->
         <% @events.each do |each| %>
         <% if each.approved == false %>
