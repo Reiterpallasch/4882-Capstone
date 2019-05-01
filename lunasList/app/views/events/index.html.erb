@@ -1,13 +1,15 @@
+
 <body>
-<main>
+<main role="main" class="container">
   <section id="events" class="section-with-bg">
     <div class="container wow fadeInUp">
       <div class="section-header">
         <h2>Our Next Events</h2>
         <p>Welcome you to join us for our events</p>
       </div>
-      <div class="container">
-      <div class="content row justify-content-center">
+</div>
+     </div>
+ 
         <!-- event list -->
         <% @events = @events.order(time: :asc)%>
         <% @events.each do |each| %>
@@ -43,7 +45,7 @@
               </td>
               <% end %>
             </div>
-
+</div>
           </div>
           <% end %>
           <% end %>
