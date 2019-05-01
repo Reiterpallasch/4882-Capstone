@@ -1,8 +1,7 @@
 <%= form_with model: restaurant, local: true do |form| %>
 
      <div class="field">
-        <%= form.label :name, 'Restaurant Name'%>
-        <%= form.text_field :name, class: 'form-control', :required => true %>
+        <%= form.text_field :name, class: 'form-control', :required => true, placeholder: 'Restaurant Name' %>
         <% if restaurant.errors.full_messages_for(:name).any?%>
             <div class="invalid-feedback">
                 <% restaurant.errors.full_messages_for(:name).each do |error_message|%>
@@ -16,8 +15,7 @@
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <div class="field">
-                <%= form.label :address%>
-                <%= form.text_field :address, class: 'form-control', :required => true %>
+                <%= form.text_field :address, class: 'form-control', :required => true, placeholder: 'Address' %>
                 <% if restaurant.errors.full_messages_for(:address).any?%>
                     <div class="invalid-feedback">
                         <% restaurant.errors.full_messages_for(:address).each do |error_message|%>
@@ -29,8 +27,7 @@
         </div>
         <div class="col-md-4 mb-3">
             <div class="field">
-                <%= form.label :city%>
-                <%= form.text_field :city, class: 'form-control', :required => true %>
+                <%= form.text_field :city, class: 'form-control', :required => true, placeholder: 'City' %>
                 <% if restaurant.errors.full_messages_for(:city).any?%>
                     <div class="invalid-feedback">
                         <% restaurant.errors.full_messages_for(:city).each do |error_message|%>
@@ -41,8 +38,7 @@
             </div>
         </div>
         <div class="field">
-            <%= form.label :state%>
-             <%= form.select :state, options_for_select([['AK', 'AK'],
+            <%= form.select(:state, options_for_select([['AK', 'AK'],
             ['AL', 'AL'],
             ['AR', 'AR'],
             ['AZ', 'AZ'],
@@ -92,7 +88,7 @@
             ['WA', 'WA'],
             ['WI', 'WI'],
             ['WV', 'WV'],
-            ['WY', 'WY']], :prompt => 'Select'),class: 'custom-select', :required => true%>
+            ['WY', 'WY']]), {:prompt => 'State'},{class: 'custom-select', :required => true})%>
             <% if restaurant.errors.full_messages_for(:state).any?%>
                 <div class="invalid-feedback">
                     <% restaurant.errors.full_messages_for(:state).each do |error_message|%>
@@ -106,8 +102,7 @@
     <div class='form-row'>
         <div class="col-md-4 mb-3">
             <div class="field">
-                <%= form.label :style, 'Type of Cuisine'%>
-                <%= form.text_field :style, class: 'form-control', :required => true %>
+                <%= form.text_field :style, class: 'form-control', :required => true, placeholder: 'Type of Cuisine' %>
                 <% if restaurant.errors.full_messages_for(:style).any?%>
                     <div class="invalid-feedback">
                         <% restaurant.errors.full_messages_for(:style).each do |error_message|%>
@@ -117,30 +112,29 @@
                 <% end %>
             </div>
         </div>
-
-        <div class="col-md-4 mb-3">
-            <div class="field">
-                <%= form.label :additional, 'Additional Information (Optional)'%>
-                <%= form.text_area :additional, class: 'form-control'%>
-                <% if restaurant.errors.full_messages_for(:additional).any?%>
-                    <div class="invalid-feedback">
-                        <% restaurant.errors.full_messages_for(:additional).each do |error_message|%>
-                            <%= error_message %>.
-                        <% end %>
-                    </div>
+    </div>
+    
+    <div class="field">
+        <%= form.text_area :additional, class: 'form-control', placeholder: 'Additional Information (Optional)'%>
+        <% if restaurant.errors.full_messages_for(:additional).any?%>
+            <div class="invalid-feedback">
+                <% restaurant.errors.full_messages_for(:additional).each do |error_message|%>
+                    <%= error_message %>.
                 <% end %>
             </div>
-        </div>
+        <% end %>
     </div>
+    
+
 
 <%if user_signed_in? %>
-<% if current_user.admin == true %>
-    <div class="field">
-        <%= form.label :approved %>
-        <%= form.select :approved, options_for_select(["false","true"], selected: @restaurant.approved),class: 'form-control' %>
-</div>
-
-<% end %>
+    <% if current_user.admin == true %>
+        <div class='form-row'>
+            <div class="field">
+                Approved? <%= form.select(:approved, options_for_select(["false","true"]), {selected: @restaurant.approved},{class: 'custom-select'}) %>
+            </div>
+        </div>
+    <% end %>
 <%end%>
     </div>
 

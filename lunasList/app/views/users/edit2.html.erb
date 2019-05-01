@@ -1,49 +1,115 @@
-<%= form_with model: @user, local: true do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+<main role="main" class="container">
+  <%= form_with model: @user, local: true do |f| %>
+    <div class='form-row'>
+        <div class="col-md-4 mb-3">
+          <div class="field">
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Name", class: 'form-control', :required => true %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-  </div>
+        <div class="col-md-4 mb-3">
+          <div class="field">
+            <%= f.text_field :phone, autofocus: true, autocomplete: "phone", placeholder: 'Phone Number', class: 'form-control', :required => true %>
+          </div>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city, autofocus: true, autocomplete: "city" %>
-  </div>
+      <div class='form-row'>
+        <div class="col-md-4 mb-3">
+          <div class="field">
+            <%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: 'Address', class: 'form-control', :required => true %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state, autofocus: true, autocomplete: "state" %>
-  </div>
+        <div class="col-md-4 mb-3">
+          <div class="field">
+            <%= f.text_field :city, autofocus: true, autocomplete: "city", placeholder: 'City', class: 'form-control', :required => true %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :zip %><br />
-    <%= f.text_field :zip, autofocus: true, autocomplete: "zip" %>
-  </div>
+        <div class="field">
+          <%= f.select(:state, options_for_select([['AK', 'AK'],
+                ['AL', 'AL'],
+                ['AR', 'AR'],
+                ['AZ', 'AZ'],
+                ['CA', 'CA'],
+                ['CO', 'CO'],
+                ['CT', 'CT'],
+                ['DC', 'DC'],
+                ['DE', 'DE'],
+                ['FL', 'FL'],
+                ['GA', 'GA'],
+                ['HI', 'HI'],
+                ['IA', 'IA'],
+                ['ID', 'ID'],
+                ['IL', 'IL'],
+                ['IN', 'IN'],
+                ['KS', 'KS'],
+                ['KY', 'KY'],
+                ['LA', 'LA'],
+                ['MA', 'MA'],
+                ['MD', 'MD'],
+                ['ME', 'ME'],
+                ['MI', 'MI'],
+                ['MN', 'MN'],
+                ['MO', 'MO'],
+                ['MS', 'MS'],
+                ['MT', 'MT'],
+                ['NC', 'NC'],
+                ['ND', 'ND'],
+                ['NE', 'NE'],
+                ['NH', 'NH'],
+                ['NJ', 'NJ'],
+                ['NM', 'NM'],
+                ['NV', 'NV'],
+                ['NY', 'NY'],
+                ['OH', 'OH'],
+                ['OK', 'OK'],
+                ['OR', 'OR'],
+                ['PA', 'PA'],
+                ['RI', 'RI'],
+                ['SC', 'SC'],
+                ['SD', 'SD'],
+                ['TN', 'TN'],
+                ['TX', 'TX'],
+                ['UT', 'UT'],
+                ['VA', 'VA'],
+                ['VT', 'VT'],
+                ['WA', 'WA'],
+                ['WI', 'WI'],
+                ['WV', 'WV'],
+                ['WY', 'WY']]), {:prompt => 'State'},{class: 'custom-select', :required => true})%>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class='form-row'>
+        <div class="col-md-4 mb-3">
+          <div class="field">
+            <%= f.text_field :zip, autofocus: true, autocomplete: "zip", placeholder: 'Zipcode', class: 'form-control', :required => true %>
+          </div>
+        </div>
+      </div>
 
-<%if user_signed_in? %>
-<% if current_user.admin == true %>
-    <div class="field">
-        <%= f.label :admin %>
-        <%= f.select :admin, options_for_select(["false","true"], selected: @user.admin),class: 'form-control' %>
-</div>
-<% end %>
-<%end%>
-    </div>
+      <div class='form-row'>
+        <div class="col-md-4 mb-3">
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email Address', class: 'form-control', :required => true %>
+          </div>
+        </div>
+      </div>
 
-    <div class="actions">
-        <%= f.submit 'Submit', class: 'btn btn-primary'%>
-    </div>
-<% end %>
+  <%if user_signed_in? %>
+  <% if current_user.admin == true %>
+      <div class="field">
+          <%= f.label :admin %>
+          <%= f.select :admin, options_for_select(["false","true"], selected: @user.admin),class: 'form-control' %>
+  </div>
+  <% end %>
+  <%end%>
+      </div>
+
+      <div class="actions">
+          <%= f.submit 'Submit', class: 'btn btn-primary'%>
+      </div>
+  <% end %>
+</main>

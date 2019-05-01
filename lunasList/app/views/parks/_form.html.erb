@@ -2,8 +2,7 @@
 <%= form_with model: park, local: true do |form| %>
   
     <div class="field">
-        <%= form.label :name, 'Park Name'%>
-        <%= form.text_field :name, class: 'form-control', :required => true %>
+        <%= form.text_field :name, class: 'form-control', :required => true, placeholder: 'Park Name' %>
         <% if park.errors.full_messages_for(:name).any?%>
             <div class="invalid-feedback">
                 <% park.errors.full_messages_for(:name).each do |error_message|%>
@@ -17,8 +16,7 @@
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <div class="field">
-                <%= form.label :address%>
-                <%= form.text_field :address, class: 'form-control', :required => true %>
+                <%= form.text_field :address, class: 'form-control', :required => true, placeholder: 'Address' %>
                 <% if park.errors.full_messages_for(:address).any?%>
                     <div class="invalid-feedback">
                         <% park.errors.full_messages_for(:address).each do |error_message|%>
@@ -30,8 +28,7 @@
         </div>
         <div class="col-md-4 mb-3">
             <div class="field">
-                <%= form.label :city%>
-                <%= form.text_field :city, class: 'form-control', :required => true %>
+                <%= form.text_field :city, class: 'form-control', :required => true, placeholder: 'City' %>
                 <% if park.errors.full_messages_for(:city).any?%>
                     <div class="invalid-feedback">
                         <% park.errors.full_messages_for(:city).each do |error_message|%>
@@ -42,8 +39,7 @@
             </div>
         </div>
         <div class="field">
-            <%= form.label :state%>
-             <%= form.select :state, options_for_select([['AK', 'AK'],
+             <%= form.select(:state, options_for_select([['AK', 'AK'],
             ['AL', 'AL'],
             ['AR', 'AR'],
             ['AZ', 'AZ'],
@@ -93,7 +89,7 @@
             ['WA', 'WA'],
             ['WI', 'WI'],
             ['WV', 'WV'],
-            ['WY', 'WY']], :prompt => 'Select'),class: 'custom-select', :required => true%>
+            ['WY', 'WY']]), {:prompt => 'State'},{class: 'custom-select', :required => true})%>
             <% if park.errors.full_messages_for(:state).any?%>
                 <div class="invalid-feedback">
                     <% park.errors.full_messages_for(:state).each do |error_message|%>
@@ -104,36 +100,39 @@
         </div>
     </div>
     <div class='form-row'>
-        <div class="field">
-            <%= form.label :size%>
-            <%= form.select :size, options_for_select(["Small","Medium","Large"]), :prompt => 'Select', class: 'custom-select', :required => true %>
-            <% if park.errors.full_messages_for(:size).any?%>
-                <div class="invalid-feedback">
-                    <% park.errors.full_messages_for(:size).each do |error_message|%>
-                        <%= error_message %>.
-                    <% end %>
-                </div>
-            <% end %>
+        <div class="col-md-4 mb-3">
+            <div class="field">
+                <%= form.select(:size, options_for_select(["Small","Medium","Large"]), {:prompt => 'Size'}, {class: 'custom-select', :required => true}) %>
+                <% if park.errors.full_messages_for(:size).any?%>
+                    <div class="invalid-feedback">
+                        <% park.errors.full_messages_for(:size).each do |error_message|%>
+                            <%= error_message %>.
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
         </div>
 
-        <div class="field">
-            <%= form.label :leash%>
-            <%= form.select :leash, options_for_select(["Required","Optional","Designated Areas"]), :prompt => 'Select', class: 'custom-select', :required => true %>
-            <% if park.errors.full_messages_for(:leash).any?%>
-                <div class="invalid-feedback">
-                    <% park.errors.full_messages_for(:leash).each do |error_message|%>
-                        <%= error_message %>.
-                    <% end %>
-                </div>
-            <% end %>
+        <div class="col-md-4 mb-3">
+            <div class="field">
+                <%= form.select(:leash, options_for_select(["Required","Optional","Designated Areas"]), {:prompt => 'Leashes'}, {class: 'custom-select', :required => true}) %>
+                <% if park.errors.full_messages_for(:leash).any?%>
+                    <div class="invalid-feedback">
+                        <% park.errors.full_messages_for(:leash).each do |error_message|%>
+                            <%= error_message %>.
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
         </div>
     </div>
 
 <%if user_signed_in? %>
     <% if current_user.admin == true %>
-        <div class="field">
-            <%= form.label :approved %>
-            <%= form.select :approved, options_for_select(["false","true"], selected: @park.approved),class: 'custom-select' %>
+        <div class='form-row'>
+            <div class="field">
+                Approved? <%= form.select(:approved, options_for_select(["false","true"]), {selected: @park.approved},{class: 'custom-select'}) %>
+            </div>
         </div>
     <% end %>
 <%end%>
