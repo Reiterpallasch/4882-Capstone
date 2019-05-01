@@ -109,7 +109,7 @@
     <% if current_user.admin == true %>
         <div class="form-row">
             <div class="field">
-                Approved? <%= form.select(:approved, options_for_select(["false","true"]), {selected: @event.approved},{class: 'custom-select'}) %>
+                Approved? <%= form.select(:approved, options_for_select(["false","true"],selected: @event.approved), {selected: @event.approved},{class: 'custom-select'}) %>
             </div>
         </div>
     <% end %>
