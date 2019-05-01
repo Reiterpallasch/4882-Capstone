@@ -20,20 +20,21 @@
           <hr>
           <ul class="event-list">
             <% @events.each do |each| %>
-            <li>
-              <time>
-                <span class="day"><%= each.time.day %></span>
-                <span class="month"><%= each.time.strftime("%b")%></span>
-                <span class="year"><%= each.time.year %></span>
-                <span class="time"><%= each.time.time %></span>
-              </time>
-              <div class="info">
-                <h2 class="title"><%= each.title %></h2>
-                <p class="desc"><%= each.location %></p>
-                <p class="desc"><span class="fa fa-clock-o"></span> <%= each.time.strftime("%I:%M %P")%></p>
-              </div>
-
-            </li>
+              <% if each.approved == true%>
+                <li>
+                  <time>
+                    <span class="day"><%= each.time.day %></span>
+                    <span class="month"><%= each.time.strftime("%b")%></span>
+                    <span class="year"><%= each.time.year %></span>
+                    <span class="time"><%= each.time.time %></span>
+                  </time>
+                  <div class="info">
+                    <h2 class="title"><%= each.title %></h2>
+                    <p class="desc"><%= each.location %></p>
+                    <p class="desc"><span class="fa fa-clock-o"></span> <%= each.time.strftime("%I:%M %P")%></p>
+                  </div>
+                </li>
+              <% end %>
             <% end %>
             <%= link_to "View More Details", events_path %>
           </ul>
